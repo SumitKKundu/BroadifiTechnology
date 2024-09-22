@@ -328,6 +328,3 @@ if (document.querySelector('.broadifi__faqs')) {
 
         testimoniAnimTl.add(maskPathAnim, "<");
 }
-
-
-
