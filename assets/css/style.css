@@ -137,6 +137,26 @@ ol[role="list"]{
 }
 
 
+/********************** PRELOADER ANIM **********************/
+body > *:not(.broadifi__preloader){
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.broadifi__preloader{
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+}
+
+.broadifi__preloader svg{
+    display: block;
+    width: 6rem;
+    height: auto;
+}
+
 /********************** HEADER **********************/
 .broadifi__header{
     padding-top: 2rem;
@@ -965,19 +985,3 @@ ol[role="list"]{
     top: 73%;
 }
 
-
-
-.preloader{
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-    display: grid;
-    place-items: center;
-    backdrop-filter: blur(50px);
-}
-
-.preloader svg{
-    display: block;
-    width: 6rem;
-    height: auto;
-}
