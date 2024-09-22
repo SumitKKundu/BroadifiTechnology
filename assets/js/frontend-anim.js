@@ -19,7 +19,6 @@ if(document.querySelector('.broadifi__preloader')){
 }
 
 
-
 // TEXT FLIP ANIM
 if(document.querySelector('.flip-words')){
     let flipTxtAminTl = gsap.timeline({ repeat: -1, ease: "power4.inOut" });
@@ -329,3 +328,58 @@ if (document.querySelector('.broadifi__faqs')) {
 
         testimoniAnimTl.add(maskPathAnim, "<");
 }
+
+
+// DOTTED ARW SVG ANIM
+let dottedArwSvgs = document.querySelectorAll('.dotted-arw-svg');
+
+dottedArwSvgs.forEach((dottedArwSvg) => {
+    gsap.set(dottedArwSvg.querySelector('.maskArwPath'), { drawSVG: "0%"});
+
+    let arwSvgAnimTl = gsap.timeline({ repeat: -1, repeatDelay: 2 });
+    
+    arwSvgAnimTl.to(dottedArwSvg.querySelector('.maskArwPath'), { drawSVG: "100%", duration: 1});
+});
+
+
+// MSG ICON SVG ANIM
+let msgSvgs = document.querySelectorAll('.msg--svg');
+
+msgSvgs.forEach((msgSvg) => {
+
+    let msgLinePaths = msgSvg.querySelectorAll('.msgLinePath');
+    msgLinePaths.forEach((path) => {
+        gsap.set(path, { drawSVG: "0%" });
+    });
+
+    let msgLinePaths1 = msgSvg.querySelectorAll('.msgLinePath:not(.msgLinePathReverse)');
+    let msgLinePaths2 = msgSvg.querySelectorAll('.msgLinePath.msgLinePathReverse');
+    gsap.to(msgLinePaths1, { drawSVG: "-100%", stagger: 0.3, duration: 0.5, repeat: -1,  });
+    gsap.to(msgLinePaths2, { drawSVG: "100%", stagger: 0.3, duration: 0.5, repeat: -1,  });
+});
+
+
+
+// ANIMATION COUNTER
+let animateCounters = document.querySelectorAll('.animate-counter');
+
+[...animateCounters].forEach((animateCounter) => {
+    let start = parseInt(animateCounter.getAttribute('data-start'), 10);
+    let end = parseInt(animateCounter.getAttribute('data-end'), 10);
+
+    gsap.fromTo(animateCounter, 
+        { innerText: start }, 
+        { 
+            innerText: end, 
+            duration: 0.5,
+            snap: { innerText: 1 },
+            ease: "power1.out",
+            onUpdate: () => {
+                animateCounter.innerText = `${Math.round(animateCounter.innerText)}+`;
+            }
+        }
+    );
+});
+
+  
+
