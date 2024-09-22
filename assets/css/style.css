@@ -31,18 +31,11 @@ body {
     font-weight: 400;
     font-style: normal;
     color: var(--clr-logo);
-    background-image: url('./../img/noise-grid.svg');
-    background-repeat: repeat;
-    min-height: 3000px;
-}
-
-body.home{
     background-image: url('./../img/ellipse-bg.svg'), url('./../img/noise-grid.svg');
     background-repeat: no-repeat, repeat;
     background-size: cover, auto;
     background-position: top center, top;
 }
-
 
 input, button, textarea, select {
     font: inherit;
@@ -133,12 +126,20 @@ ol[role="list"]{
     font-family: var(--ff-heading);
     font-size: 3rem;
     font-weight: 700;
+    line-height: 1.25;
     overflow: hidden;
 }
 
+.broadifi--section-headingX2{
+    font-family: var(--ff-heading);
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.15;
+    overflow: hidden;
+}
 
 /********************** PRELOADER ANIM **********************/
-body > *:not(.broadifi__preloader){
+body:has(.broadifi__preloader) > *:not(.broadifi__preloader){
     opacity: 0;
     transform: translateY(10px);
 }
@@ -340,41 +341,41 @@ body > *:not(.broadifi__preloader){
     bottom: 0;
 }
 
-.doodles-svgs img{
+.broadifi__homeHero  .doodles-svgs img{
     display: block;
     max-width: 1em;
     max-height: 0.85em;
 }
 
-.doodles-svgs > span{
+.broadifi__homeHero  .doodles-svgs > span{
     position: absolute;
 }
 
-.doodle-left{
+.broadifi__homeHero  .doodle-left{
     top: 59%;
     left: 24%;
 }
 
-.doodle-right{
+.broadifi__homeHero  .doodle-right{
     top: 56%;
     left: 72%;
 }
 
-.lines-svgs > span{
+.broadifi__homeHero  .lines-svgs > span{
     position: absolute;
 }
 
-.line-left{
+.broadifi__homeHero  .line-left{
     top: 8%;
     left: 22%;
 }
 
-.line-right{
+.broadifi__homeHero  .line-right{
     top: 6%;
     left: 73%;
 }
 
-.lines-svgs > span svg{
+.broadifi__homeHero  .lines-svgs > span svg{
     max-width: 1em;
     height: auto;
 }
@@ -985,3 +986,201 @@ body > *:not(.broadifi__preloader){
     top: 73%;
 }
 
+
+
+/* ====================================================== */
+
+/********************** INNER HERO **********************/
+.broadifi--section-content{
+    max-width: var(--content-width, auto);
+    font-size: 1.5rem;
+    line-height: 1.65;
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.broadifi__inner-hero{
+    padding-top: 1rem;
+    padding-bottom: 6rem;
+}
+
+.broadifi__inner-hero .inner-container{
+    position: relative;
+}
+
+
+/********************** ABOUT HERO **********************/
+.broadifi__about-hero .broadifi--section-content{
+    --content-width: 34ch;
+}
+
+.broadifi__about-hero .doodles-svgs span{
+    position: absolute;
+} 
+
+.broadifi__about-hero .doodles-svgs svg{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.broadifi__about-hero .posiLT{
+    top: -24%;
+    left: 14%;
+    width: 5%; 
+}
+
+.broadifi__about-hero .posiLC{
+    top: 34%;
+    left: 9%;
+}
+
+.broadifi__about-hero .posiLB{
+    top: 75%;
+    left: 16%;
+}
+
+.broadifi__about-hero .posiRT{
+    top: -15%;
+    right: 3%;
+}
+
+.broadifi__about-hero .posiRC{
+    top: 29%;
+    right: 10%;
+}
+
+.broadifi__about-hero .posiRB{
+    top: 92%;
+    right: 15%;
+    width: 4%;
+}
+
+/********************** ABOUT GRID **********************/
+.broadifi__about--grid{
+    display: grid;
+    grid-template-columns: 1.275fr 0.5fr 0.5fr;
+    gap: 0.75rem;
+    padding-bottom: 4rem;
+}
+
+.broadifi__about--grid figure{
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.broadifi__about--grid  .stats-box{
+    border: 2px solid currentColor;
+    border-radius: 1rem;
+    text-align: center;
+    display: grid;
+    place-content: center;
+    padding: 1rem;
+}
+
+.broadifi__about--grid  .stats-box h6{
+    font-family: var(--ff-heading);
+    font-size: 3rem;
+    line-height: 1;
+}
+
+.broadifi__about--grid  .stats-box p{
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 0.3em;
+}
+
+/********************** WHO WE ARE **********************/
+
+.broadifi__whoWeAre .inner-container{
+    --content-width: 57ch;
+    padding-bottom: 5rem;
+    position: relative;
+}
+
+.broadifi__whoWeAre .doodles-svgs span{
+    position: absolute;
+}
+
+.broadifi__whoWeAre .doodles-svgs svg{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.broadifi__whoWeAre .doodles-svgs .posiLT{
+    top: 14%;
+    left: 10%;
+}
+.broadifi__whoWeAre .doodles-svgs .posiLB{
+    bottom: 6%;
+    left: 0;
+}
+.broadifi__whoWeAre .doodles-svgs .posiRT{
+    top: 0;
+    right: 0;
+}
+.broadifi__whoWeAre .doodles-svgs .posiRB{
+    bottom: 0;
+    right: 0;
+}
+
+
+.broadifi__heroCTA {
+    padding-top:  3rem;
+    padding-bottom: 2rem;
+}
+
+.broadifi__heroCTA .inner-container{
+    padding: 1.5rem;
+    border: 2px solid currentColor;
+    border-radius: 1rem;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.broadifi__heroCTA--content{
+    font-size: 1.25rem;
+    line-height: 1.5;
+    text-wrap: balance;
+}
+
+.broadifi__heroCTA--btn{
+    font-size: 1rem;
+    padding: 2em;
+    overflow: hidden;
+}
+
+.broadifi__heroCTA--btn svg{
+    width: 2.5em;
+    height: 2.5em;
+}
+
+.broadifi__heroCTA:hover svg{
+    animation: btnArwAnim 1000ms ease-in-out forwards;
+}
+
+@keyframes btnArwAnim {
+    0% {
+        transform: translate(0);
+    }
+    25% {
+        transform: translate(200%, -200%);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(-200%, 200%);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0);
+        opacity: 1;
+    }
+}
