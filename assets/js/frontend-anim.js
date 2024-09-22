@@ -4,50 +4,19 @@
 
 gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
 
-gsap.set("main", {opacity: 0, y: 100} )
-const preloaderTl = gsap.timeline({});
 
-// Set the initial state of the SVG paths to 0%
-gsap.set(".preloader .logoTMask", { drawSVG: "0%" });
-gsap.set(".preloader .logoBMask", { drawSVG: "0%" });
-
-// Step 1: Fade in and move the SVG into place
-preloaderTl.to(".preloader svg", { opacity: 1, y: 0, ease: "power1.out" });
-
-// Step 2: Draw the top logo mask from 0% to 100%
-preloaderTl.to(".preloader .logoTMask", { drawSVG: "100%", ease: "power1.out", duration: 1 });
-
-// Step 3: Draw the bottom logo mask from 0% to 100%
-preloaderTl.to(".preloader .logoBMask", { drawSVG: "100%", ease: "power1.out", duration: 1 });
-
-// Step 4: Pause for a moment (adjust the duration as needed)
-preloaderTl.to({}, { duration: 1 }); // This creates a pause
-
-// Step 5: Draw the top logo mask from 100% to -100%
-preloaderTl.fromTo(".preloader .logoTMask", 
-    { drawSVG: "100%" }, 
-    { drawSVG: "-100%", ease: "power1.out", duration: 1 }
-);
-
-// Step 6: Draw the bottom logo mask from 100% to -100%
-preloaderTl.fromTo(".preloader .logoBMask", 
-    { drawSVG: "100%" }, 
-    { drawSVG: "-100%", ease: "power1.out", duration: 1 }
-);
-
-// Step 7: Optionally, animate the masks back to 0% from -100%
-preloaderTl.fromTo(".preloader .logoTMask", 
-    { drawSVG: "-100%" }, 
-    { drawSVG: "0%", ease: "power1.out", duration: 1 }
-);
-
-preloaderTl.fromTo(".preloader .logoBMask", 
-    { drawSVG: "-100%" }, 
-    { drawSVG: "0%", ease: "power1.out", duration: 1 }
-);
-
-
-
+// PRELOADER ANIM
+if(document.querySelector('.broadifi__preloader')){
+    gsap.set(".broadifi__preloader .logoTMask, .broadifi__preloader .logoBMask", { drawSVG: "0%"} )
+    gsap.set(".broadifi__preloader svg", {opacity: 0, y: 100} )
+    let preloaderTl = gsap.timeline({ ease: "power1.out",});
+    preloaderTl.to(".broadifi__preloader svg",  {opacity: 1, y: 0} )
+    preloaderTl.to(".broadifi__preloader .logoTMask", { drawSVG: "100%", duration:1})
+    preloaderTl.to(".broadifi__preloader .logoBMask", { drawSVG: "100%", duration:1})
+    preloaderTl.to(".broadifi__preloader svg",  {opacity: 0, y: 100, duration:0.5} )
+    preloaderTl.to(".broadifi__preloader",  {opacity: 0, y: "10%"})
+    preloaderTl.to("body > *:not(.broadifi__preloader)", {opacity: 1, y: 0, duration:0.2}, "<")
+}
 
 
 // TEXT FLIP ANIM
