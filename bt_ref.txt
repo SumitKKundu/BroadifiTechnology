@@ -1,0 +1,30 @@
+ref:
+
+text flip
+https://codepen.io/mvaneijgen/pen/poGvGBJ
+
+mask
+https://codepen.io/ahmed-attia/pen/qBgoGPP
+
+
+https://codepen.io/michellebarker/pen/dyMQYYz   
+
+
+svg arw anim
+ https://www.motiontricks.com/svg-calligraphy-handwriting-animation/
+
+https://www.motiontricks.com/adobe-illustrator-path-direction-quick-tip/
+
+https://www.motiontricks.com/svg-masks-and-clippaths/
+
+https://www.motiontricks.com/svg-dashed-line-animation/ 
+
+
+move img slide
+https://codepen.io/skippyisthaman/pen/rNMXMzp
+https://codepen.io/ignaciogiri/pen/bGYQYWa
+https://codepen.io/GreenSock/pen/RwKwLWK
+
+
+accordian
+https://codepen.io/kevinpowell/pen/NWOgVga
