@@ -14,9 +14,10 @@ if(document.querySelector('.broadifi__preloader')){
     preloaderTl.to(".broadifi__preloader .logoTMask", { drawSVG: "100%", duration:1})
     preloaderTl.to(".broadifi__preloader .logoBMask", { drawSVG: "100%", duration:1})
     preloaderTl.to(".broadifi__preloader svg",  {opacity: 0, y: 100, duration:0.5} )
-    preloaderTl.to(".broadifi__preloader",  {opacity: 0, y: "10%"})
+    preloaderTl.to(".broadifi__preloader",  {opacity: 0, y: "10%", zIndex: "-1"})
     preloaderTl.to("body > *:not(.broadifi__preloader)", {opacity: 1, y: 0, duration:0.2}, "<")
 }
+
 
 
 // TEXT FLIP ANIM
