@@ -1241,6 +1241,7 @@ body:has(.broadifi__preloader) > *:not(.broadifi__preloader){
     display: grid;
     grid-template-columns: 1fr 1.275fr;
     gap: 1rem;
+    align-items: start;
     margin-bottom: 2rem;
 }
 
@@ -1291,7 +1292,7 @@ body:has(.broadifi__preloader) > *:not(.broadifi__preloader){
 
 .broadifi--service-grid--content p{
     font-size: 0.875rem;
-    margin-top: 3em;
+    margin-top: 2em;
     max-width: 61ch;
     text-wrap: balance;
 }
@@ -1301,7 +1302,7 @@ body:has(.broadifi__preloader) > *:not(.broadifi__preloader){
     font-size: 0.875rem;
     font-weight: 700;
     line-height: 1.25;
-    margin-top: 3em;
+    margin-top: 2em;
     margin-bottom: 0.5em;
 }
 
