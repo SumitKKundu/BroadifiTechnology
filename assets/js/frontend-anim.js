@@ -7,8 +7,9 @@ gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
 
 // PRELOADER ANIM
 if(document.querySelector('.broadifi__preloader')){
-    gsap.set(".broadifi__preloader .logoTMask, .broadifi__preloader .logoBMask", { drawSVG: "0%"} )
     gsap.set(".broadifi__preloader svg", {opacity: 0, y: 100} )
+    gsap.set(".broadifi__preloader .logoTMask, .broadifi__preloader .logoBMask", { drawSVG: "0%"} )
+  
     let preloaderTl = gsap.timeline({ 
         ease: "power1.out",
         onComplete: loadAnims
@@ -23,9 +24,6 @@ if(document.querySelector('.broadifi__preloader')){
 else{
     loadAnims(); 
 }
-
-function loadAnims(){
-   
 
 // TEXT FLIP ANIM
 if(document.querySelector('.flip-words')){
@@ -64,6 +62,9 @@ if(document.querySelector('.flip-words')){
 }
 
 
+
+function loadAnims(){
+
 // TECHNOLOGY MOVEMENT ANIM
 if(document.querySelector('.technology-logs')){
     gsap.to(".technology-logs > span", {
@@ -92,7 +93,7 @@ svgElements.forEach(svgElm => {
     );
 
     svgLineAnimTl.fromTo(svgElm.querySelectorAll('.pathBlk path'), 
-      { drawSVG: "100% 100%" }, 
+      { drawSVG: "101% 101%" }, 
       { drawSVG: "0% 100%", duration: 0.15, stagger: 0.1, ease: "power1.out" }
     );
 
@@ -101,7 +102,7 @@ svgElements.forEach(svgElm => {
     );
 
     svgLineAnimTl.fromTo(svgElm.querySelectorAll('.pathWhite path'), 
-        { drawSVG: "100% 100%" }, 
+        { drawSVG: "101% 101%" }, 
         { drawSVG: "0% 100%", duration: 0.40, stagger: 0.1, ease: "power2.inOut" }
     );
 
@@ -152,7 +153,7 @@ sectionHeadings.forEach(heading => {
             ease: "power2.out",
             scrollTrigger: {
                 trigger: heading,
-                start: 'top 80%'
+                start: 'top 90%'
             }
         });
     }
@@ -218,18 +219,19 @@ if(document.querySelector('.gear-svg')){
 
 // TESTIMONIAL SLIDER
 const testimoni_swiper = new Swiper('.testimoni_swiper', {
+    loop: true,
 
     autoplay: {
-        delay: 3000,
+     delay: 5000,
     },
 
-    // If we need pagination
+   speed: 1500,
+
     pagination: {
       el: '.testimoni_swiper--pagination',
       clickable: true
     },
-  
-    // Navigation arrows
+
     navigation: {
       nextEl: '.testimoni_swiper-nav--next',
       prevEl: '.testimoni_swiper-nav--prev',
@@ -351,9 +353,28 @@ dottedArwSvgs.forEach((dottedArwSvg) => {
 
 
 // MSG ICON SVG ANIM
+// let msgSvgs = document.querySelectorAll('.msg--svg');
+
+// msgSvgs.forEach((msgSvg) => {
+
+//     let msgLinePaths = msgSvg.querySelectorAll('.msgLinePath');
+//     msgLinePaths.forEach((path) => {
+//         gsap.set(path, { drawSVG: "0%" });
+//     });
+
+//     let msgLinePaths1 = msgSvg.querySelectorAll('.msgLinePath:not(.msgLinePathReverse)');
+//     let msgLinePaths2 = msgSvg.querySelectorAll('.msgLinePath.msgLinePathReverse');
+//     gsap.to(msgLinePaths1, { drawSVG: "-100%", stagger: 0.3, duration: 0.5, repeat: -1, repeatDelay: 2 });
+//     gsap.to(msgLinePaths2, { drawSVG: "100%", stagger: 0.3, duration: 0.5, repeat: -1, repeatDelay: 2 });
+// });
+
+
 let msgSvgs = document.querySelectorAll('.msg--svg');
 
-msgSvgs.forEach((msgSvg) => {
+msgSvgs.forEach((msgSvg, index) => {
+    const msgSvgsAnimTl = gsap.timeline({
+        delay: index * 0.5,
+    });
 
     let msgLinePaths = msgSvg.querySelectorAll('.msgLinePath');
     msgLinePaths.forEach((path) => {
@@ -362,9 +383,12 @@ msgSvgs.forEach((msgSvg) => {
 
     let msgLinePaths1 = msgSvg.querySelectorAll('.msgLinePath:not(.msgLinePathReverse)');
     let msgLinePaths2 = msgSvg.querySelectorAll('.msgLinePath.msgLinePathReverse');
-    gsap.to(msgLinePaths1, { drawSVG: "-100%", stagger: 0.3, duration: 0.5, repeat: -1,  });
-    gsap.to(msgLinePaths2, { drawSVG: "100%", stagger: 0.3, duration: 0.5, repeat: -1,  });
+
+    // Add animations to the timeline
+    msgSvgsAnimTl.to(msgLinePaths1, { drawSVG: "-100%", stagger: 0.3, duration: 0.5, repeat: -1, repeatDelay: 1 })
+    msgSvgsAnimTl.to(msgLinePaths2, { drawSVG: "100%", stagger: 0.3, duration: 0.5, repeat: -1, repeatDelay: 1 }); // Start at the same time as the first animation
 });
+
 
 
 
@@ -393,4 +417,4 @@ let animateCounters = document.querySelectorAll('.animate-counter');
     );
 });
 
-}
+} // end load anim function
