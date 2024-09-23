@@ -990,7 +990,7 @@ body:has(.broadifi__preloader) > *:not(.broadifi__preloader){
 
 /* ====================================================== */
 
-/********************** INNER HERO **********************/
+/********************** INNER HERO COMMON **********************/
 .broadifi--section-content{
     max-width: var(--content-width, auto);
     font-size: 1.5rem;
@@ -1004,6 +1004,14 @@ body:has(.broadifi__preloader) > *:not(.broadifi__preloader){
     padding-top: 1rem;
     padding-bottom: 6rem;
 }
+
+.broadifi__inner-hero--split .inner-container{
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    align-items: end;
+    gap: 2rem;
+}
+
 
 .broadifi__inner-hero .inner-container{
     position: relative;
@@ -1183,4 +1191,43 @@ body:has(.broadifi__preloader) > *:not(.broadifi__preloader){
         transform: translate(0);
         opacity: 1;
     }
+}
+
+
+/********************** SERVICE HERO **********************/
+
+.broadifi__services-hero{
+    padding-top: 2rem;
+}
+
+.broadifi__services-hero .doodles-svgs span{
+    position: absolute;
+}
+
+.broadifi__services-hero .doodles-svgs svg{
+    display: block;
+}
+
+.broadifi__services-hero .posiLT1{
+    top: -3rem;
+    left: 0;
+    width: 4%;
+}
+
+.broadifi__services-hero .posiLT2{
+    top: -4rem;
+    left: 9%;
+    width: 8%;
+}
+
+.broadifi__services-hero .posiRB1{
+    bottom: -28%;
+    right: 8%;
+    width: 8%;
+}
+
+.broadifi__services-hero .posiRB2{
+    bottom: 0;
+    right: 0;
+    width: 4%;
 }

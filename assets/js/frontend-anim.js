@@ -9,7 +9,10 @@ gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
 if(document.querySelector('.broadifi__preloader')){
     gsap.set(".broadifi__preloader .logoTMask, .broadifi__preloader .logoBMask", { drawSVG: "0%"} )
     gsap.set(".broadifi__preloader svg", {opacity: 0, y: 100} )
-    let preloaderTl = gsap.timeline({ ease: "power1.out",});
+    let preloaderTl = gsap.timeline({ 
+        ease: "power1.out",
+        onComplete: loadAnims
+    });
     preloaderTl.to(".broadifi__preloader svg",  {opacity: 1, y: 0} )
     preloaderTl.to(".broadifi__preloader .logoTMask", { drawSVG: "100%", duration:1})
     preloaderTl.to(".broadifi__preloader .logoBMask", { drawSVG: "100%", duration:1})
@@ -17,7 +20,12 @@ if(document.querySelector('.broadifi__preloader')){
     preloaderTl.to(".broadifi__preloader",  {opacity: 0, y: "10%", zIndex: "-1"})
     preloaderTl.to("body > *:not(.broadifi__preloader)", {opacity: 1, y: 0, duration:0.2}, "<")
 }
+else{
+    loadAnims(); 
+}
 
+function loadAnims(){
+   
 
 // TEXT FLIP ANIM
 if(document.querySelector('.flip-words')){
@@ -371,15 +379,18 @@ let animateCounters = document.querySelectorAll('.animate-counter');
         { innerText: start }, 
         { 
             innerText: end, 
-            duration: 0.5,
+            duration: 1,
             snap: { innerText: 1 },
             ease: "power1.out",
             onUpdate: () => {
                 animateCounter.innerText = `${Math.round(animateCounter.innerText)}+`;
+            },
+            scrollTrigger: {
+                trigger: animateCounter,
+                start: "top 80%",
             }
         }
     );
 });
 
-  
-
+}
