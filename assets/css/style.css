@@ -580,12 +580,15 @@ body:has(.broadifi__preloader) > *:not(.broadifi__preloader){
     width: 1.5em;
 }
 
+.broadifi__homeServices .broadifi--service-item h5{
+    opacity: 0;
+}
+
 .broadifi--service-item h5{
     font-size: 1.5rem;
     font-family: var(--ff-heading);
     font-weight: 700;
     line-height: 1.25;
-    opacity: 0;
 }
 
 .broadifi--service-item > h5{
@@ -1195,7 +1198,6 @@ body:has(.broadifi__preloader) > *:not(.broadifi__preloader){
 
 
 /********************** SERVICE HERO **********************/
-
 .broadifi__services-hero{
     padding-top: 2rem;
 }
@@ -1230,4 +1232,87 @@ body:has(.broadifi__preloader) > *:not(.broadifi__preloader){
     bottom: 0;
     right: 0;
     width: 4%;
+}
+
+
+
+/********************** SERVICE GRID **********************/
+.broadifi--service-grid{
+    display: grid;
+    grid-template-columns: 1fr 1.275fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.broadifi--service-grid:nth-child(odd){
+    grid-template-columns: 1.275fr 1fr;
+}
+
+.broadifi--service-grid:nth-child(odd) > *{
+    grid-row: 1;
+}
+
+.broadifi--service-grid:nth-child(odd) .broadifi--service-grid--image{
+    grid-column: 2;
+}
+.broadifi--service-grid:nth-child(odd) .broadifi--service-grid--content{
+    grid-column: 1;
+}
+
+
+.broadifi--service-grid--image{
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.broadifi--service-grid--content{
+    border: 2px solid currentColor;
+    border-radius: 1rem;
+    padding: 0 2rem 2rem;
+    background-color: #fff;
+}
+
+.broadifi--service-grid--content h5{
+    font-size: 1.5rem;
+    font-family: var(--ff-heading);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.broadifi--service-grid--content > h5{
+    white-space: nowrap;
+    transition: inherit;
+    opacity: 1;
+    position: absolute;
+    top: 4rem;
+    left: 1.5rem;
+    right: 7.5rem;
+}
+
+.broadifi--service-grid--content p{
+    font-size: 0.875rem;
+    margin-top: 3em;
+    max-width: 61ch;
+    text-wrap: balance;
+}
+
+.broadifi--service-grid--content h6{
+    font-family: var(--ff-heading);
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-top: 3em;
+    margin-bottom: 0.5em;
+}
+
+.broadifi--service-grid--content figure{
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+    align-items: end;
+    gap: 0.25rem;
+}
+
+.broadifi--service-grid--content figure img{
+    max-width: 2.5rem;
 }
