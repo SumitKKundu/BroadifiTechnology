@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BT</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <!-- <div class="broadifi__preloader">
+        <svg width="38" height="43" viewBox="0 0 38 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g>
+                <path d="M37.8284 0C37.8284 3.20211 35.2152 5.79928 31.9933 5.79928H5.82628V31.4045C5.82628 34.6008 3.21894 37.1951 0 37.1951V0H37.8284Z" stroke-width="1" stroke="currentColor"/>
+                <path d="M36.5688 16.5282C35.5943 19.0694 34.0975 21.3579 32.2103 23.2631H32.0078C32.0078 23.3299 32.0078 23.3967 32.0078 23.4635C32.0753 23.3967 32.1399 23.3299 32.2074 23.2631H37.8367V24.0705C37.7838 25.7985 37.505 27.4685 37.0266 29.0542C37.0266 29.0542 37.0266 29.0542 37.0266 29.0571C36.0874 32.1705 34.3881 34.9585 32.137 37.2093C28.6796 40.6683 23.9249 42.8552 18.6567 43.0004H5.92188V42.9946C5.92188 39.7999 8.53693 37.2122 11.7654 37.2122H17.3359C17.5884 37.2268 17.8437 37.2326 18.099 37.2326C18.3544 37.2326 18.6097 37.2268 18.8621 37.2122C24.2067 36.9276 28.75 33.6574 30.8162 29.0542H9.29415V23.3561H18.099C18.6479 23.3561 19.1879 23.3241 19.7191 23.2631C24.1597 22.752 27.9634 20.1759 30.1148 16.5282C30.3848 16.0722 30.6284 15.5988 30.8456 15.1109H9.29415V9.31982H37.8396V10.194C37.7868 11.8988 37.5167 13.5455 37.0501 15.1109C36.9063 15.5901 36.7449 16.0606 36.5688 16.5253V16.5282Z" stroke-width="1" stroke="currentColor"/>
+            </g>
+
+            <mask id="maskLogo" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="38" height="44">
+                <path d="M37.8284 0C37.8284 3.20211 35.2152 5.79928 31.9933 5.79928H5.82628V31.4045C5.82628 34.6008 3.21894 37.1951 0 37.1951V0H37.8284Z" fill="currentColor"/>
+                <path d="M36.5688 16.5282C35.5943 19.0694 34.0975 21.3579 32.2103 23.2631H32.0078C32.0078 23.3299 32.0078 23.3967 32.0078 23.4635C32.0753 23.3967 32.1399 23.3299 32.2074 23.2631H37.8367V24.0705C37.7838 25.7985 37.505 27.4685 37.0266 29.0542C37.0266 29.0542 37.0266 29.0542 37.0266 29.0571C36.0874 32.1705 34.3881 34.9585 32.137 37.2093C28.6796 40.6683 23.9249 42.8552 18.6567 43.0004H5.92188V42.9946C5.92188 39.7999 8.53693 37.2122 11.7654 37.2122H17.3359C17.5884 37.2268 17.8437 37.2326 18.099 37.2326C18.3544 37.2326 18.6097 37.2268 18.8621 37.2122C24.2067 36.9276 28.75 33.6574 30.8162 29.0542H9.29415V23.3561H18.099C18.6479 23.3561 19.1879 23.3241 19.7191 23.2631C24.1597 22.752 27.9634 20.1759 30.1148 16.5282C30.3848 16.0722 30.6284 15.5988 30.8456 15.1109H9.29415V9.31982H37.8396V10.194C37.7868 11.8988 37.5167 13.5455 37.0501 15.1109C36.9063 15.5901 36.7449 16.0606 36.5688 16.5253V16.5282Z" fill="currentColor"/>
+            </mask>
+            <g mask="url(#maskLogo)">
+                <path class="logoTMask" d="M2.5 37.5V2.5H39" stroke="currentColor" stroke-width="7"/>
+                <path class="logoBMask" d="M9 12.5L36.5 12C35 14.6667 29.1 23.2 27.5 24C25.9 24.8 11.5 24 11.5 26L34.5 26.5C33 32.5 27.5 41 12.5 40.5H5.5" stroke="currentColor" stroke-width="7"/>
+            </g>
+            <path d="M3.56329 37.5249C2.50191 37.5249 1.64062 38.3777 1.64062 39.4286C1.64062 40.4795 2.50191 41.3323 3.56329 41.3323C4.62466 41.3323 5.48303 40.4795 5.48303 39.4286C5.48303 38.3777 4.62176 37.5249 3.56329 37.5249ZM3.56329 40.3216C3.0645 40.3216 2.66141 39.9225 2.66141 39.4286C2.66141 38.9347 3.0674 38.5356 3.56329 38.5356C4.05918 38.5356 4.46515 38.9347 4.46515 39.4286C4.46515 39.9225 4.06207 40.3216 3.56329 40.3216Z" fill="currentColor"/>
+        </svg>
+    </div> -->
+    
+    <header class="broadifi__header">
+        <div class="main-container">
+            <div class="inner-container">
+                <a href="index.html" class="broadifi--logo">
+                    <svg width="38" height="43" viewBox="0 0 38 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M37.8284 0C37.8284 3.20211 35.2152 5.79928 31.9933 5.79928H5.82628V31.4045C5.82628 34.6008 3.21894 37.1951 0 37.1951V0H37.8284Z" fill="currentColor"/>
+                        <path d="M36.5688 16.5282C35.5943 19.0694 34.0975 21.3579 32.2103 23.2631H32.0078C32.0078 23.3299 32.0078 23.3967 32.0078 23.4635C32.0753 23.3967 32.1399 23.3299 32.2074 23.2631H37.8367V24.0705C37.7838 25.7985 37.505 27.4685 37.0266 29.0542C37.0266 29.0542 37.0266 29.0542 37.0266 29.0571C36.0874 32.1705 34.3881 34.9585 32.137 37.2093C28.6796 40.6683 23.9249 42.8552 18.6567 43.0004H5.92188V42.9946C5.92188 39.7999 8.53693 37.2122 11.7654 37.2122H17.3359C17.5884 37.2268 17.8437 37.2326 18.099 37.2326C18.3544 37.2326 18.6097 37.2268 18.8621 37.2122C24.2067 36.9276 28.75 33.6574 30.8162 29.0542H9.29415V23.3561H18.099C18.6479 23.3561 19.1879 23.3241 19.7191 23.2631C24.1597 22.752 27.9634 20.1759 30.1148 16.5282C30.3848 16.0722 30.6284 15.5988 30.8456 15.1109H9.29415V9.31982H37.8396V10.194C37.7868 11.8988 37.5167 13.5455 37.0501 15.1109C36.9063 15.5901 36.7449 16.0606 36.5688 16.5253V16.5282Z" fill="currentColor"/>
+                        <path d="M3.56329 37.5249C2.50191 37.5249 1.64062 38.3777 1.64062 39.4286C1.64062 40.4795 2.50191 41.3323 3.56329 41.3323C4.62466 41.3323 5.48303 40.4795 5.48303 39.4286C5.48303 38.3777 4.62176 37.5249 3.56329 37.5249ZM3.56329 40.3216C3.0645 40.3216 2.66141 39.9225 2.66141 39.4286C2.66141 38.9347 3.0674 38.5356 3.56329 38.5356C4.05918 38.5356 4.46515 38.9347 4.46515 39.4286C4.46515 39.9225 4.06207 40.3216 3.56329 40.3216Z" fill="currentColor"/>
+                    </svg>
+                </a>
+
+                <nav class="broadifi--header-nav">
+                    <!-- <button type="button"></button> -->
+
+                    <ul role="list">
+                        <li><a href="index.html" >Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="blogs.html">Blogs</a></li>
+                        <li><a href="open-sources.html">Open Sources</a></li>
+                        <li><a href="careers.html"  class="nav-actv">Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="broadifi__jobOpenings">
+            <div class="main-container">
+                <div class="inner-container">
+                    <div class="broadifi__jobOpeningss--grid">
+                        <h5>HTML Animator</h5>
+                        <div class="tags">
+                            <span><img src="assets/img/doodles-svgs/ico-location2.svg"/> Kolkata</span>
+                            <span><img src="assets/img/doodles-svgs/ico-clock.svg"/> Full time</span>
+                        </div>
+
+                        <span class="posiLB msg--svg">
+                            <svg width="83" height="73" viewBox="0 0 83 73" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M70.1437 45.5547L69.7215 45.8226L69.3897 45.2997L69.9708 45.0856L70.1437 45.5547ZM77.8102 50.0994L77.6373 49.6302L78.0524 50.5368L77.8102 50.0994ZM77.403 50.3261L77.6468 50.7627L77.6468 50.7627L77.403 50.3261ZM65.0418 47.4347L64.8689 46.9656L65.1771 46.852L65.4037 47.0897L65.0418 47.4347ZM12.0261 56.3135L12.4953 56.1406L12.0261 56.3135ZM3.45845 33.0631L2.98929 33.236L3.45845 33.0631ZM67.2502 9.55609C65.4361 4.633 59.9745 2.11269 55.0514 3.92683L54.7056 2.98851C60.1469 0.983411 66.1835 3.76901 68.1886 9.21032L67.2502 9.55609ZM75.8179 32.8064L67.2502 9.55609L68.1886 9.21032L76.7562 32.4607L75.8179 32.8064ZM70.1886 45.0053C75.1117 43.1911 77.632 37.7295 75.8179 32.8064L76.7562 32.4607C78.7613 37.902 75.9757 43.9385 70.5344 45.9436L70.1886 45.0053ZM69.9708 45.0856L70.1886 45.0053L70.5344 45.9436L70.3166 46.0239L69.9708 45.0856ZM77.983 50.5685C76.1923 51.2284 74.5027 50.6384 73.1068 49.6207C71.7147 48.6058 70.5458 47.1216 69.7215 45.8226L70.5659 45.2868C71.3565 46.5328 72.4459 47.9013 73.6959 48.8126C74.942 49.7211 76.2782 50.131 77.6373 49.6302L77.983 50.5685ZM77.1592 49.8896C77.294 49.8143 77.4304 49.7381 77.5679 49.662L78.0524 50.5368C77.9167 50.6119 77.7818 50.6872 77.6468 50.7627L77.1592 49.8896ZM65.4037 47.0897C68.4207 50.2547 70.5641 51.3387 72.2901 51.4816C74.0233 51.6252 75.458 50.8395 77.1592 49.8896L77.6468 50.7627C75.9925 51.6864 74.2929 52.6509 72.2076 52.4782C70.1151 52.3049 67.7557 51.0064 64.6799 47.7797L65.4037 47.0897ZM24.6941 61.7698L64.8689 46.9656L65.2147 47.9039L25.0399 62.7082L24.6941 61.7698ZM12.4953 56.1406C14.3094 61.0637 19.771 63.584 24.6941 61.7698L25.0399 62.7082C19.5986 64.7133 13.5621 61.9277 11.557 56.4863L12.4953 56.1406ZM3.92762 32.8902L12.4953 56.1406L11.557 56.4863L2.98929 33.236L3.92762 32.8902ZM9.55687 20.6914C4.63378 22.5055 2.11348 27.9671 3.92762 32.8902L2.98929 33.236C0.984194 27.7947 3.76979 21.7582 9.2111 19.7531L9.55687 20.6914ZM55.0514 3.92683L9.55687 20.6914L9.2111 19.7531L54.7056 2.98851L55.0514 3.92683Z" fill="black"/>
+                                <path class="msgLinePath" d="M58.1641 12.3711L11.2481 29.6595" stroke="currentColor" stroke-linecap="round"/>
+                                <path class="msgLinePath" d="M60.9297 19.877L14.0137 37.1653" stroke="currentColor" stroke-linecap="round"/>
+                                <path class="msgLinePath" d="M63.6953 27.3848L16.7793 44.6731" stroke="currentColor" stroke-linecap="round"/>
+                                <path class="msgLinePath" d="M66.4629 34.8906L19.5469 52.179" stroke="currentColor" stroke-linecap="round"/>
+                            </svg>                            
+                        </span>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section class="broadifi__jobDetails">
+            <div class="main-container">
+                <div class="inner-container">
+                    <p class="broadifi__job-section--heading">Job Description:</p>
+                    <div class="broadifi-posts">
+                        <h1>Heading 1</h1>
+                        <h2>Heading h2</h2>
+                        <h3>Heading h3</h3>
+                        <h4>Heading h4</h4>
+                        <h5>Heading h5</h5>
+                        <h6>Heading h6</h6>
+                        <p>Lorem, ipsum dolor sit amet <a href="javascript:">link</a> adipisicing elit. Unde nostrum numquam tenetur officiis voluptatibus. Fugit quo velit minus possimus rerum distinctio nulla nesciunt vitae quis porro. Vitae repellat labore commodi.</p>
+                        <ul>
+                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum recusandae soluta error suscipit corporis quae cum! Corporis fugit deserunt dignissimos nobis perferendis sint delectus minus corrupti qui, a accusamus impedit.</li>
+                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum recusandae soluta error suscipit corporis quae cum! Corporis fugit deserunt dignissimos nobis perferendis sint delectus minus corrupti qui, a accusamus impedit.</li>
+                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum recusandae soluta error suscipit corporis quae cum! Corporis fugit deserunt dignissimos nobis perferendis sint delectus minus corrupti qui, a accusamus impedit.</li>
+                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum recusandae soluta error suscipit corporis quae cum! Corporis fugit deserunt dignissimos nobis perferendis sint delectus minus corrupti qui, a accusamus impedit.</li>
+                        </ul>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde nostrum numquam tenetur officiis voluptatibus. Fugit quo velit minus possimus rerum distinctio nulla nesciunt vitae quis porro. Vitae repellat labore commodi.</p>
+                        <ol>
+                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum recusandae soluta error suscipit corporis quae cum! Corporis fugit deserunt dignissimos nobis perferendis sint delectus minus corrupti qui, a accusamus impedit.</li>
+                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum recusandae soluta error suscipit corporis quae cum! Corporis fugit deserunt dignissimos nobis perferendis sint delectus minus corrupti qui, a accusamus impedit.</li>
+                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum recusandae soluta error suscipit corporis quae cum! Corporis fugit deserunt dignissimos nobis perferendis sint delectus minus corrupti qui, a accusamus impedit.</li>
+                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum recusandae soluta error suscipit corporis quae cum! Corporis fugit deserunt dignissimos nobis perferendis sint delectus minus corrupti qui, a accusamus impedit.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="broadifi__jobApplyForm">
+            <div class="main-container">
+                <div class="inner-container">
+                    <p class="broadifi__job-section--heading">Apply here:</p>
+                    <form action="javascript:"></form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer class="broadifi__footer">
+        <div class="main-container">
+            <div class="inner-container">
+               <figure class="broadifi__footer--logo">
+                    <svg width="38" height="43" viewBox="0 0 38 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M37.8284 0C37.8284 3.20211 35.2152 5.79928 31.9933 5.79928H5.82628V31.4045C5.82628 34.6008 3.21894 37.1951 0 37.1951V0H37.8284Z" fill="#101729"/>
+                        <path d="M36.5688 16.5282C35.5943 19.0694 34.0975 21.3579 32.2103 23.2631H32.0078C32.0078 23.3299 32.0078 23.3967 32.0078 23.4635C32.0753 23.3967 32.1399 23.3299 32.2074 23.2631H37.8367V24.0705C37.7838 25.7985 37.505 27.4685 37.0266 29.0542C37.0266 29.0542 37.0266 29.0542 37.0266 29.0571C36.0874 32.1705 34.3881 34.9585 32.137 37.2093C28.6796 40.6683 23.9249 42.8552 18.6567 43.0004H5.92188V42.9946C5.92188 39.7999 8.53693 37.2122 11.7654 37.2122H17.3359C17.5884 37.2268 17.8437 37.2326 18.099 37.2326C18.3544 37.2326 18.6097 37.2268 18.8621 37.2122C24.2067 36.9276 28.75 33.6574 30.8162 29.0542H9.29415V23.3561H18.099C18.6479 23.3561 19.1879 23.3241 19.7191 23.2631C24.1597 22.752 27.9634 20.1759 30.1148 16.5282C30.3848 16.0722 30.6284 15.5988 30.8456 15.1109H9.29415V9.31982H37.8396V10.194C37.7868 11.8988 37.5167 13.5455 37.0501 15.1109C36.9063 15.5901 36.7449 16.0606 36.5688 16.5253V16.5282Z" fill="#101729"/>
+                        <path d="M3.56328 37.5249C2.5019 37.5249 1.64062 38.3777 1.64062 39.4286C1.64062 40.4795 2.5019 41.3323 3.56328 41.3323C4.62465 41.3323 5.48303 40.4795 5.48303 39.4286C5.48303 38.3777 4.62175 37.5249 3.56328 37.5249ZM3.56328 40.3216C3.06449 40.3216 2.6614 39.9225 2.6614 39.4286C2.6614 38.9347 3.06739 38.5356 3.56328 38.5356C4.05917 38.5356 4.46515 38.9347 4.46515 39.4286C4.46515 39.9225 4.06206 40.3216 3.56328 40.3216Z" fill="#101729"/>
+                    </svg>
+                    Broadifi Technologies
+               </figure>
+
+               <nav class="broadifi--footer-nav">
+                    <ul role="list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="blogs.html">Blogs</a></li>
+                        <li><a href="careers.html"  class="nav-actv"S>Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="projects.html">Our Projects</a></li>
+                    </ul>
+                </nav>
+
+                <div class="broadifi--footer-contact">
+                    <div>
+                        <a class="d-grid" href="https://maps.app.goo.gl/pyT49HGGUHRG7KEa8" target="_blank">
+                            <svg width="26" height="32" viewBox="0 0 26 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M25 13C25 22 13 31 13 31C13 31 1 22 1 13C1 9.8174 2.26428 6.76516 4.51472 4.51472C6.76516 2.26428 9.8174 1 13 1C16.1826 1 19.2348 2.26428 21.4853 4.51472C23.7357 6.76516 25 9.8174 25 13Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M13 17.5C15.4853 17.5 17.5 15.4853 17.5 13C17.5 10.5147 15.4853 8.5 13 8.5C10.5147 8.5 8.5 10.5147 8.5 13C8.5 15.4853 10.5147 17.5 13 17.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>                                
+                            Module - 206, Webel IT Park, Tower 1, BN-4, <br/>Sector V, Kolkata, West Bengal, India 700091
+                        </a>
+                    </div>
+
+                    <div class="d-grid">
+                        <svg width="26" height="32" viewBox="0 0 26 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24.9993 23.4608V27.977C25.0006 28.3962 24.9318 28.8112 24.7971 29.1954C24.6625 29.5795 24.465 29.9243 24.2174 30.2078C23.9698 30.4912 23.6774 30.707 23.359 30.8413C23.0407 30.9756 22.7033 31.0255 22.3686 30.9878C18.6554 30.4844 15.0885 28.9015 11.9547 26.3662C9.03906 24.0549 6.56712 20.9711 4.7144 17.3338C2.67503 13.4065 1.40589 8.93512 1.00979 4.28192C0.979639 3.86563 1.0193 3.44607 1.12624 3.04994C1.23319 2.65381 1.40508 2.28981 1.63097 1.9811C1.85686 1.67239 2.1318 1.42574 2.43829 1.25685C2.74478 1.08796 3.0761 1.00054 3.41115 1.00015H7.03129C7.61692 0.992955 8.18466 1.25167 8.62869 1.72806C9.07273 2.20445 9.36276 2.86601 9.44472 3.58944C9.59752 5.03473 9.88089 6.45381 10.2894 7.81962C10.4518 8.35844 10.4869 8.94403 10.3907 9.507C10.2944 10.07 10.0708 10.5867 9.7464 10.996L8.21387 12.9079C9.9317 16.6767 12.4331 19.7973 15.4542 21.9403L16.9867 20.0284C17.3148 19.6237 17.729 19.3448 18.1803 19.2247C18.6315 19.1046 19.1009 19.1485 19.5328 19.351C20.6277 19.8607 21.7652 20.2142 22.9237 20.4048C23.5099 20.508 24.0452 20.8763 24.4279 21.4398C24.8106 22.0032 25.0139 22.7225 24.9993 23.4608Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>                                                    
+                        <div>
+                            <a href="tel:+918240438524">+91 8240438524</a>/<a href="tel:+919475007738">+91 9475007738</a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <a class="d-grid" href="mailto:contact@broadifitech.com">
+                            <svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M35 6.625L19.751 17.3125C19.2262 17.6752 18.6193 17.8675 18 17.8675C17.3807 17.8675 16.7738 17.6752 16.249 17.3125L1 6.625M4.4 1H31.6C33.4778 1 35 2.67893 35 4.75V27.25C35 29.3211 33.4778 31 31.6 31H4.4C2.52223 31 1 29.3211 1 27.25V4.75C1 2.67893 2.52223 1 4.4 1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>                                
+                            contact@broadifitech.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+
+    <script src="assets/vendors/gsap/gsap.min.js"></script>
+    <script src="assets/vendors/gsap/ScrollTrigger.min.js"></script>
+    <script src="assets/vendors/gsap/DrawSVGPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="assets/js/frontend-anim.js"></script>
+</body>
+</html>
+
+
+<!-- <section class="broadifi__values">
+    <div class="main-container">
+        <div class="inner-container">
+            <div class="broadifi--section-heading text-center">
+                <h3>Our <span class="grad--txt">Values</span></h3>
+            </div>
+        </div>
+    </div>
+</section> -->

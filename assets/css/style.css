@@ -205,6 +205,50 @@ ol[role="list"]{
 
 /* -------------------------------------- */
 
+.cta--arwTL{
+    font-size: 2rem;
+    display: -ms-inline-grid;
+    display: inline-grid;
+    font-weight: 700;
+    gap: 1em;
+    grid-auto-flow: column;
+    align-items: center;
+    line-height: 1.2;
+}
+
+.cta--arwTL svg{
+    width: 0.95em;
+    height: auto;
+    display: block;
+}
+
+
+.cta--arwTL:hover span svg,
+.cta--arwTL:focus span svg{
+    animation: arwTLAnim 400ms ease forwards;
+}
+
+
+@keyframes arwTLAnim {
+    0% {
+        transform: translate(0);
+    }
+    25% {
+        transform: translate(100%, -100%);
+        opacity: 0;
+    }
+    30% {
+        transform: translate(-100%, 100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0);
+        opacity: 1;
+    }
+}
+
+/* -------------------------------------- */
+
 .broadifi--section-heading{
     font-family: var(--ff-heading);
     font-size: 3rem;
@@ -1098,7 +1142,7 @@ body:has(.broadifi__preloader) > *:not(.broadifi__preloader){
 
 .broadifi__inner-hero--split .inner-container{
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: var(--cols,  1.5fr 1fr);
     align-items: end;
     gap: 2rem;
 }
@@ -1106,6 +1150,61 @@ body:has(.broadifi__preloader) > *:not(.broadifi__preloader){
 
 .broadifi__inner-hero .inner-container{
     position: relative;
+}
+
+
+/* POSTS */
+
+.broadifi-posts ul,
+.broadifi-posts ol,
+.broadifi-posts p{
+    line-height: 2;
+}
+
+.broadifi-posts h1{
+    font-size: 2.5rem;
+    font-family: var(--ff-heading);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.broadifi-posts h2{
+    font-size: 1.5rem;
+    font-family: var(--ff-heading);
+    font-weight: 700;
+}
+
+.broadifi-posts h3{
+    font-size: 1.17rem;
+    font-family: var(--ff-heading);
+    font-weight: 700;
+}
+
+.broadifi-posts h4{
+    font-size: 1rem;
+}
+
+.broadifi-posts h5{
+    font-size: .83rem;
+}
+
+.broadifi-posts h6{
+    font-size: .67em
+}
+
+.broadifi-posts ul,
+.broadifi-posts ol{
+    padding-left: 1em;
+    line-height: inherit;
+}
+
+.broadifi-posts li + li{
+    margin-top: 1em;
+}
+
+.broadifi__blog-details--content > * + *,
+.broadifi-posts > * + *{
+    margin-top: 1rem;
 }
 
 
@@ -1519,6 +1618,10 @@ body:has(.broadifi__preloader) > *:not(.broadifi__preloader){
     position: relative;
 }
 
+.broadifi__blog-details--content .blog--title h1{
+    padding-bottom: 0.5em;
+}
+
 .broadifi__blog-details--content .blog--title .posiT{
     position: absolute;
     top: -41%;
@@ -1533,59 +1636,6 @@ body:has(.broadifi__preloader) > *:not(.broadifi__preloader){
    width: 9%;
 }
 
-.broadifi__blog-details--content ul,
-.broadifi__blog-details--content ol,
-.broadifi__blog-details--content p{
-    line-height: 2;
-}
-
-.broadifi__blog-details--content h1{
-    font-size: 2.5rem;
-    font-family: var(--ff-heading);
-    font-weight: 700;
-    line-height: 1.25;
-    padding-bottom: 0.5em;
-}
-
-.broadifi__blog-details--content h2{
-    font-size: 1.5rem;
-    font-family: var(--ff-heading);
-    font-weight: 700;
-}
-
-.broadifi__blog-details--content h3{
-    font-size: 1.17rem;
-    font-family: var(--ff-heading);
-    font-weight: 700;
-}
-
-.broadifi__blog-details--content h4{
-    font-size: 1rem;
-}
-
-.broadifi__blog-details--content h5{
-    font-size: .83rem;
-}
-
-.broadifi__blog-details--content h6{
-    font-size: .67em
-}
-
-.broadifi__blog-details--content ul,
-.broadifi__blog-details--content ol{
-    padding-left: 1em;
-    line-height: inherit;
-}
-
-.broadifi__blog-details--content li + li{
-    margin-top: 1em;
-}
-
-.broadifi__blog-details--content > * + *,
-.broadifi__blog-details--content .blog--desc > * + *{
-    margin-top: 1rem;
-}
-
 .broadifi-blog--aside{
     border: 2px solid currentColor;
     padding: 1rem;
@@ -1595,8 +1645,6 @@ body:has(.broadifi__preloader) > *:not(.broadifi__preloader){
 .broadifi-blog--aside > * + *{
     margin-top: 3rem;
 }
-
-
 
 
 /********************** OPEN SOURCE **********************/
@@ -1728,4 +1776,212 @@ body:has(.broadifi__preloader) > *:not(.broadifi__preloader){
 .broadifi__openSourceContributers--grid figure:hover figcaption{
     opacity: 1;
     transition: 400ms ease;
+}
+
+
+/* CAREER */
+.broadifi__careers-hero{
+    padding-bottom: 2rem;
+}
+.broadifi__careers-hero .inner-container{
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+    --cols: 1fr 1fr;
+}
+.broadifi__careers-hero .doodles-svgs{
+    display: contents;
+}
+.broadifi__careers-hero .doodles-svgs span{
+    position: absolute;
+}
+
+.broadifi__careers-hero .doodles-svgs .posiT{
+    width: 9%;
+    top: 0;
+    left: 43%;
+}
+.broadifi__careers-hero .doodles-svgs .posiC{
+    width: 4%;
+    top: 40%;
+    left: 45%;
+}
+.broadifi__careers-hero .doodles-svgs .posiB{
+    width: 4%;
+    bottom: 0;
+    left: 43%;
+}
+
+
+/* JOB OPENINGS */
+.broadifi__jobOpeningss--grid{
+    display: grid;
+    grid-template-columns: auto auto; 
+    justify-content: space-between;
+    align-items: start;
+    gap: 1rem;
+    padding: 1.5rem;
+    border: 3px solid currentColor;
+    border-radius: 0.85rem;
+    margin-top: 2rem;
+    position: relative;
+    background-color: #fff;
+}
+
+.broadifi__jobOpeningss--grid .msg--svg{
+    position: absolute;
+    top: -38%;
+    left: 30%;
+    z-index: -1;
+    width: 6%;
+}
+
+.broadifi__jobOpeningss--grid h5{
+    font-family: var(--ff-heading);
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.broadifi__jobOpeningss--grid .tags{
+    grid-column: 1;
+}
+
+.broadifi__jobOpeningss--grid .tags span{
+    font-size: 1.25rem;
+    display: inline-block;
+    padding: 0.4em 1em;
+    border-radius: 100em;
+    margin-right: 0.5em;
+    border: 2px solid currentColor;
+    line-height: 1;
+}
+
+.broadifi__jobOpeningss--grid .tags span img{
+    vertical-align: middle;
+    margin-right: 0.25em;
+}
+
+.broadifi__jobOpeningss--grid .cta--arwTL{
+    grid-column: 2;
+    grid-row: 1/span 2;
+}
+
+
+/* LIFE */
+.broadifi__life{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.broadifi__life--grid{
+    margin-top: 2.5rem;
+}
+
+.broadifi__life--grid > *{
+    border: 2px solid currentColor;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.broadifi__life--grid article{
+    font-family: var(--ff-heading);
+    font-size: 3rem;
+    font-weight: 600;
+    padding: 1.5rem;
+    line-height: 1.35;
+    padding-right: 1.5em;
+}
+
+.broadifi__life--grid article .posiT{
+    width: 26%;
+    margin-left: auto;
+    display: block;
+    margin-top: 10%;
+}
+
+.broadifi__life--grid article .posiB{
+    width: 17%;
+    margin-left: auto;
+    display: block;
+    margin-top: 10%;
+    margin-right: auto;
+}
+
+.broadifi__life--grid article .posiC{
+    width: 16%;
+    margin-left: auto;
+    display: block;
+    margin-top: 10%;
+}
+
+.broadifi__life--grid figure img{
+    width: 100%;
+    height: 100%;
+    transform: scale(1.05);
+    display: block;
+    object-fit: cover;
+}
+
+.broadifi__life--grid{
+    display: grid;
+    grid-template-columns: repeat(42, minmax(0, 1fr));
+    gap: 1rem;
+}   
+
+.broadifi__life--grid article:nth-of-type(1){
+    grid-column: 1/span 14;
+}
+.broadifi__life--grid article:nth-of-type(2){
+    grid-column: 29/-1;
+    grid-row: 2/span 2;
+}
+.broadifi__life--grid figure:nth-of-type(1){
+    grid-column: span 11;
+}
+.broadifi__life--grid figure:nth-of-type(2){
+    grid-column: span 17;
+}
+.broadifi__life--grid figure:nth-of-type(3){
+    grid-column: span 9;
+}
+.broadifi__life--grid figure:nth-of-type(4){
+    grid-column: span 19;
+}
+.broadifi__life--grid figure:nth-of-type(5){
+    grid-column: 1/span 13;
+}
+.broadifi__life--grid figure:nth-of-type(6){
+    grid-column: span 15;
+}
+
+/* JOB DETAILS */
+.broadifi__jobDetails{
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.broadifi__job-section--heading{
+    font-size: 2rem;
+    margin-bottom: 0.85em;
+    line-height: 1.1;
+}
+
+.broadifi__jobApplyForm .inner-container{
+    border: 2px solid currentColor;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+/* CONTACT */
+.broadifi__contact-hero .broadifi--section-content{
+    --content-width: 46ch;
+}
+
+.broadifi__contact-hero .posiLB.tel--svg{
+    width: 3%;
+}
+.broadifi__contact-hero .posiRT.tel--svg{
+    top: 0;
+    right: 10%;
+    width: 3%;
 }
