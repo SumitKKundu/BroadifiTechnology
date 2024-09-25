@@ -37,8 +37,20 @@ body {
     background-position: top center, top;
 }
 
+address{
+    font-style: normal;
+}
+
 input, button, textarea, select {
     font: inherit;
+    color: inherit;
+    border: none;
+    outline: none;
+    resize: none;
+}
+
+button{
+    cursor: pointer;
 }
 
 p, h1, h2, h3, h4, h5, h6 {
@@ -122,6 +134,36 @@ ol[role="list"]{
     background: linear-gradient(89.38deg, #5A88FE -49.81%, #FB30B6 138.8%);
     color: #fff;
     border-radius: 100em;
+    position: relative;
+    transition: 400ms ease;
+}
+
+.cta--grad::after{
+    content: '';
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyOCAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEgOEgyN00yNyA4TDIwIDFNMjcgOEwyMCAxNSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K");
+    display: inline-block;
+    background-size: contain;
+    width: 1.5em;
+    height: 1em;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+
+    position: absolute;
+    top: 1.5em;
+    right: 1em;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: inherit;
+}
+.cta--grad:hover{
+    padding-right: 3em;
+    padding-left: 1.2em;
+}
+
+.cta--grad:hover::after{
+    opacity: 1;
+    transform: translateX(0);
 }
 
 /* -------------------------------------- */
@@ -222,7 +264,8 @@ ol[role="list"]{
     display: block;
 }
 
-
+.cta--parent:hover .cta--arwTL span svg, 
+.cta--parent:focus .cta--arwTL span svg, 
 .cta--arwTL:hover span svg,
 .cta--arwTL:focus span svg{
     animation: arwTLAnim 400ms ease forwards;
@@ -1968,8 +2011,21 @@ body:has(.broadifi__preloader) > *:not(.broadifi__preloader){
 .broadifi__jobApplyForm .inner-container{
     border: 2px solid currentColor;
     padding: 1.5rem;
+    padding-bottom: 5rem;
     border-radius: 0.5rem;
+    margin-bottom: 4rem;
     overflow: hidden;
+}
+
+.broadifi__jobApplyForm .form-style{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.broadifi__jobApplyForm .form-style .form-btn{
+    align-self: end;
+    justify-self: end;
 }
 
 /* CONTACT */
@@ -1985,3 +2041,92 @@ body:has(.broadifi__preloader) > *:not(.broadifi__preloader){
     right: 10%;
     width: 3%;
 }
+
+.broadifi__contacts--heading{
+    font-family: var(--ff-heading);
+    font-weight: 500;
+    font-size: 2rem;
+    margin-bottom: 0.85em;
+    line-height: 1.1;
+}
+
+.broadifi__contacts--grid,
+.broadifi__caseStudies--grid{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.broadifi__contacts--grid > *,
+.broadifi__caseStudies--grid > *{
+    background-color: #fff;
+    border-radius: 1rem;
+    border: 2px solid currentColor;
+    padding: 1.25rem;
+
+}
+
+.broadifi__contacts--grid > *{
+    display: flex;
+    flex-direction: column;
+}
+
+.broadifi__contacts .form-style{
+    display: grid;
+    gap: 1rem;
+}
+
+.broadifi__contacts .form-style .form-btn{
+   justify-self: end;
+}
+
+.broadifi__contacts iframe{
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    border: inherit;
+    overflow: hidden;
+}
+
+.broadifi__caseStudies{
+    background-image: url('./../img/doodles-svgs/long-dotted-arw-combined.svg');
+    background-repeat: repeat-y;
+    background-size: cover;
+}
+
+.broadifi__caseStudies .cta--arwTL{
+    display: grid;
+    justify-content: space-between;
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+
+.broadifi__caseStudies .cta--arwTL svg{
+    opacity: 0;
+}
+
+.broadifi__caseStudies .cta--arwTL:hover svg{
+    opacity: 1;
+}
+
+.broadifi__caseStudies--heading{
+    font-family: var(--ff-heading);
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 1.1;
+}
+
+.broadifi__caseStudies--media{
+    border-radius: inherit;
+    border: inherit;
+    overflow: hidden;
+    grid-column: 1/-1;
+}
+
+.broadifi__caseStudies--media img{
+    transform: scale(1.1);
+}
+

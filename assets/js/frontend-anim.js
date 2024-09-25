@@ -1,6 +1,25 @@
-// window.addEventListener('DOMContentLoaded', function() {
-//     this.alert(1)
-// });
+window.addEventListener('DOMContentLoaded', function() {
+   
+    let inputs = document.querySelectorAll('.form-file')
+
+    for (var i = 0, len = inputs.length; i < len; i++) {
+    customInput(inputs[i])
+    }
+
+    function customInput (el) {
+    const fileInput = el.querySelector('.input-file')
+    const label = el.querySelector('#upload-fileName')
+    
+    fileInput.onchange =
+    fileInput.onmouseout = function () {
+        if (!fileInput.value) return
+        
+        var value = fileInput.value.replace(/^.*[\\\/]/, '')
+        el.className += ' -chosen'
+        label.innerText = value
+    }
+    }
+});
 
 gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
 
@@ -12,11 +31,11 @@ if(document.querySelector('.broadifi__preloader')){
   
     let preloaderTl = gsap.timeline({ 
         ease: "power1.out",
-        onComplete: loadAnims
+        // onComplete: loadAnims
     });
     preloaderTl.to(".broadifi__preloader svg",  {opacity: 1, y: 0} )
     preloaderTl.to(".broadifi__preloader .logoTMask", { drawSVG: "100%", duration:1})
-    preloaderTl.to(".broadifi__preloader .logoBMask", { drawSVG: "100%", duration:1})
+    preloaderTl.to(".broadifi__preloader .logoBMask", { drawSVG: "100%", duration:1, onComplete: loadAnims}); // call loadAnim() here;
     preloaderTl.to(".broadifi__preloader svg",  {opacity: 0, y: 100, duration:0.5} )
     preloaderTl.to(".broadifi__preloader",  {opacity: 0, y: "10%", zIndex: "-1"})
     preloaderTl.to("body > *:not(.broadifi__preloader)", {opacity: 1, y: 0, duration:0.2}, "<")
@@ -25,6 +44,10 @@ else{
     loadAnims(); 
 }
 
+
+
+
+function loadAnims(){
 // TEXT FLIP ANIM
 if(document.querySelector('.flip-words')){
     let flipTxtAminTl = gsap.timeline({ repeat: -1, ease: "power4.inOut" });
@@ -60,10 +83,6 @@ if(document.querySelector('.flip-words')){
         stagger
     );
 }
-
-
-
-function loadAnims(){
 
 // TECHNOLOGY MOVEMENT ANIM
 if(document.querySelector('.technology-logs')){
@@ -418,3 +437,4 @@ let animateCounters = document.querySelectorAll('.animate-counter');
 });
 
 } // end load anim function
+
