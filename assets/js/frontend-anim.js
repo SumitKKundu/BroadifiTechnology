@@ -38,7 +38,7 @@ if(document.querySelector('.broadifi__preloader')){
     preloaderTl.to(".broadifi__preloader .logoBMask", { drawSVG: "100%", duration:1, onComplete: loadAnims}); // call loadAnim() here;
     preloaderTl.to(".broadifi__preloader svg",  {opacity: 0, y: 100, duration:0.5} )
     preloaderTl.to(".broadifi__preloader",  {opacity: 0, y: "10%", zIndex: "-1"})
-    preloaderTl.to("body > *:not(.broadifi__preloader)", {opacity: 1, y: 0, duration:0.2}, "<")
+    preloaderTl.to("body:has(.broadifi__preloader) header, body:has(.broadifi__preloader) main, body:has(.broadifi__preloader) footer", {opacity: 1, y: 0, duration:0.2}, "<")
 }
 else{
     loadAnims(); 
@@ -147,10 +147,10 @@ if(document.querySelector('.broadifi__projectsLogo')){
         gsap.to(getExpandable, {
             scrollTrigger: {
                 trigger: '.broadifi__projectsLogo',
-                start: 'top 75%',
+                start: 'top 80%',
                 end: '+=200',
                 scrub: 1,
-                // markers: true,
+                //markers: true,
             },
             width: `${getExpandable.getAttribute('data-actual-width')}px`
         });
@@ -180,40 +180,97 @@ sectionHeadings.forEach(heading => {
 
 
 // VALUES ARW ANIM
-if(document.querySelector('.broadifi__values')){
-    gsap.set(".dotPath, .arwPath",{ 
+if (document.querySelector('.broadifi__values')) {
+    gsap.set(".broadifi__values .dotted-arw .dotPath, .broadifi__values .dotted-arw .arwPath", { 
         drawSVG: "0%" 
     });
-    
-    // gsap.set('.broadifi__value-item', {
-    //     autoAlpha: 0
-    // })
-    
-    let dottedArwPathAnimTl = gsap.timeline({ 
-        ease: "power3",
-        scrollTrigger: {
-            trigger: '.broadifi__value-item:nth-child(4)',
-            start: 'top 70%',
-            //markers: true
-        }
-    });
-    
-    // dottedArwPathAnimTl.to(".broadifi__value-item:nth-child(1)", {autoAlpha: 1, duration: 0.2});
-    // dottedArwPathAnimTl.to(".broadifi__value-item:nth-child(2)", {autoAlpha: 1, duration: 0.2});
-    // dottedArwPathAnimTl.to(".broadifi__value-item:nth-child(3)", {autoAlpha: 1, duration: 0.2});
-    // dottedArwPathAnimTl.to(".dotted-arw--3 .dotPath", {drawSVG: "100%", duration: 2.5});
-    // dottedArwPathAnimTl.to(".broadifi__value-item:nth-child(5)", {autoAlpha: 1, duration: 0}, "-=0.5"); // Check if this is desired
-    // dottedArwPathAnimTl.to(".dotted-arw--3 .arwPath", {drawSVG: "100%", duration: 0.2});
-    // dottedArwPathAnimTl.to(".dotted-arw--4 .dotPath", {drawSVG: "100%", duration: 2.5});
-    // dottedArwPathAnimTl.to(".broadifi__value-item:nth-child(4)", {autoAlpha: 1, duration: 0.2}, "+=0.1"); // Just use "+=0.1"
-    // dottedArwPathAnimTl.to(".dotted-arw--4 .arwPath", {drawSVG: "100%", duration: 0.2});
-    // dottedArwPathAnimTl.to(".dotted-arw--5 .dotPath", {drawSVG: "100%", duration: 2.5});
-    // dottedArwPathAnimTl.to(".dotted-arw--5 .arwPath", {drawSVG: "100%", duration: 0.2});
-    
-    
-    dottedArwPathAnimTl.to(".dotPath", {drawSVG: "100%", duration: 1});
-    dottedArwPathAnimTl.to(".arwPath", {drawSVG: "100%", duration: 0.25});
+
+    function createArrowAnimation(triggerSelector, dotPaths, arwPaths) {
+        let dottedArwPathAnimTl = gsap.timeline({ 
+            ease: "power3",
+            scrollTrigger: {
+                trigger: triggerSelector,
+                start: 'top 85%',
+                end: 'bottom 15%', // Initial end position
+                // markers: true,
+                // toggleActions: "play reset play reset",
+                // onEnterBack: function() {
+                //     // Change start and end dynamically when entering back
+                //     this.start = "center center";  // New start position
+                //     // this.end = "bottom 5%";   // New end position
+                //     this.refresh(); // Refresh to apply the changes
+                // }
+            }
+        });
+
+        dottedArwPathAnimTl.to(dotPaths, { drawSVG: "100%", duration: 1 });
+        dottedArwPathAnimTl.to(arwPaths, { drawSVG: "100%", duration: 0.25 });
+
+        return dottedArwPathAnimTl;
+    }
+
+    // Animation for the first set of arrows
+    createArrowAnimation(
+        '.broadifi__value-item:nth-child(1)',
+        ".dotted-arw--1 .dotPath, .dotted-arw--2 .dotPath",
+        ".dotted-arw--1 .arwPath, .dotted-arw--2 .arwPath"
+    );
+
+    // Animation for the second set of arrows
+    createArrowAnimation(
+        '.broadifi__value-item:nth-child(4)',
+        ".dotted-arw--3 .dotPath, .dotted-arw--4 .dotPath, .dotted-arw--5 .dotPath",
+        ".dotted-arw--3 .arwPath, .dotted-arw--4 .arwPath, .dotted-arw--5 .arwPath"
+    );
 }
+
+// if(document.querySelector('.broadifi__values')){
+//     gsap.set(".broadifi__values .dotted-arw .dotPath, .broadifi__values .dotted-arw .arwPath",{ 
+//         drawSVG: "0%" 
+//     });
+    
+//     // gsap.set('.broadifi__value-item', {
+//     //     autoAlpha: 0
+//     // })
+
+//     let dottedArwPathAnimTlT = gsap.timeline({ 
+//         ease: "power3",
+//         scrollTrigger: {
+//             trigger: '.broadifi__value-item:nth-child(1)',
+//             start: 'top 85%',
+//             // markers: true
+//         }
+//     });
+
+//     dottedArwPathAnimTlT.to(".dotted-arw--1 .dotPath, .dotted-arw--2 .dotPath", {drawSVG: "100%", duration: 1});
+//     dottedArwPathAnimTlT.to(".dotted-arw--1 .arwPath, .dotted-arw--2 .arwPath", {drawSVG: "100%", duration: 0.25});
+
+    
+//     let dottedArwPathAnimTlB = gsap.timeline({ 
+//         ease: "power3",
+//         scrollTrigger: {
+//             trigger: '.broadifi__value-item:nth-child(4)',
+//             start: 'top 85%',
+//             //markers: true
+//         }
+//     });
+    
+//     // dottedArwPathAnimTl.to(".broadifi__value-item:nth-child(1)", {autoAlpha: 1, duration: 0.2});
+//     // dottedArwPathAnimTl.to(".broadifi__value-item:nth-child(2)", {autoAlpha: 1, duration: 0.2});
+//     // dottedArwPathAnimTl.to(".broadifi__value-item:nth-child(3)", {autoAlpha: 1, duration: 0.2});
+//     // dottedArwPathAnimTl.to(".dotted-arw--3 .dotPath", {drawSVG: "100%", duration: 2.5});
+//     // dottedArwPathAnimTl.to(".broadifi__value-item:nth-child(5)", {autoAlpha: 1, duration: 0}, "-=0.5"); // Check if this is desired
+//     // dottedArwPathAnimTl.to(".dotted-arw--3 .arwPath", {drawSVG: "100%", duration: 0.2});
+//     // dottedArwPathAnimTl.to(".dotted-arw--4 .dotPath", {drawSVG: "100%", duration: 2.5});
+//     // dottedArwPathAnimTl.to(".broadifi__value-item:nth-child(4)", {autoAlpha: 1, duration: 0.2}, "+=0.1"); // Just use "+=0.1"
+//     // dottedArwPathAnimTl.to(".dotted-arw--4 .arwPath", {drawSVG: "100%", duration: 0.2});
+//     // dottedArwPathAnimTl.to(".dotted-arw--5 .dotPath", {drawSVG: "100%", duration: 2.5});
+//     // dottedArwPathAnimTl.to(".dotted-arw--5 .arwPath", {drawSVG: "100%", duration: 0.2});
+    
+    
+//     dottedArwPathAnimTlB.to(".dotted-arw--3 .dotPath, .dotted-arw--4 .dotPath, .dotted-arw--5 .dotPath", {drawSVG: "100%", duration: 1});
+//     dottedArwPathAnimTlB.to(".dotted-arw--3 .arwPath, .dotted-arw--4 .arwPath, .dotted-arw--5 .arwPath", {drawSVG: "100%", duration: 0.25});
+// }
 
 
 if(document.querySelector('.gear-svg')){
@@ -238,6 +295,7 @@ if(document.querySelector('.gear-svg')){
 
 // TESTIMONIAL SLIDER
 const testimoni_swiper = new Swiper('.testimoni_swiper', {
+    spaceBetween: 30,
     loop: true,
 
     autoplay: {
