@@ -34,3 +34,7 @@ https://codepen.io/mvaneijgen/pen/gOEYewo
 https://www.freecodecamp.org/news/build-an-interactive-accordion-component-with-react-and-gsap/
 https://react-gsap-accordion.netlify.app/
 https://gsap.com/community/forums/topic/33864-staggered-accordion/
+
+
+repeat background gradeint
+https://dev.to/clairecodes/how-to-create-a-polka-dot-background-with-css-23m0
