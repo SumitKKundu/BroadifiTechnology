@@ -28,3 +28,9 @@ https://codepen.io/GreenSock/pen/RwKwLWK
 
 accordian
 https://codepen.io/kevinpowell/pen/NWOgVga
+https://codepen.io/supah/pen/jOZezwa
+https://codepen.io/mvaneijgen/pen/KKELYqY
+https://codepen.io/mvaneijgen/pen/gOEYewo
+https://www.freecodecamp.org/news/build-an-interactive-accordion-component-with-react-and-gsap/
+https://react-gsap-accordion.netlify.app/
+https://gsap.com/community/forums/topic/33864-staggered-accordion/
