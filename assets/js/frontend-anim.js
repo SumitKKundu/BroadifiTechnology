@@ -25,20 +25,20 @@ gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
 
 
 // PRELOADER ANIM
-if(document.querySelector('.broadifi__preloader')){
-    gsap.set(".broadifi__preloader svg", {opacity: 0, y: 100} )
-    gsap.set(".broadifi__preloader .logoTMask, .broadifi__preloader .logoBMask", { drawSVG: "0%"} )
+if(document.querySelector('.broadifi__loader')){
+    gsap.set(".broadifi__loader svg", {opacity: 0, y: 100} )
+    gsap.set(".broadifi__loader .logoTMask, .broadifi__loader .logoBMask", { drawSVG: "0%"} )
   
     let preloaderTl = gsap.timeline({ 
         ease: "power1.out",
         // onComplete: loadAnims
     });
-    preloaderTl.to(".broadifi__preloader svg",  {opacity: 1, y: 0} )
-    preloaderTl.to(".broadifi__preloader .logoTMask", { drawSVG: "100%", duration:1})
-    preloaderTl.to(".broadifi__preloader .logoBMask", { drawSVG: "100%", duration:1, onComplete: loadAnims}); // call loadAnim() here;
-    preloaderTl.to(".broadifi__preloader svg",  {opacity: 0, y: 100, duration:0.5} )
-    preloaderTl.to(".broadifi__preloader",  {opacity: 0, y: "10%", zIndex: "-1"})
-    preloaderTl.to("body:has(.broadifi__preloader) header, body:has(.broadifi__preloader) main, body:has(.broadifi__preloader) footer", {opacity: 1, y: 0, duration:0.2}, "<")
+    preloaderTl.to(".broadifi__loader svg",  {opacity: 1, y: 0} )
+    preloaderTl.to(".broadifi__loader .logoTMask", { drawSVG: "100%", duration:1})
+    preloaderTl.to(".broadifi__loader .logoBMask", { drawSVG: "100%", duration:1, onComplete: loadAnims}); // call loadAnim() here;
+    preloaderTl.to(".broadifi__loader svg",  {opacity: 0, y: 100, duration:0.5} )
+    preloaderTl.to(".broadifi__loader",  {opacity: 0, y: "10%", zIndex: "-1"})
+    preloaderTl.to(".broadifi__loader ~ header, .broadifi__loader ~ main, .broadifi__loader ~ footer", {opacity: 1, y: 0, duration:0.2}, "<")
 }
 else{
     loadAnims(); 
@@ -383,6 +383,46 @@ const accordionBtns = document.querySelectorAll(".accordion-trigger");
         }
     })
 });
+
+
+// const accordionBtns = document.querySelectorAll(".accordion-trigger");
+
+// [...accordionBtns].forEach(accordionBtn => {
+//     accordionBtn.addEventListener('click', () => {
+//         const content = accordionBtn.nextElementSibling;
+//         const isExpanded = accordionBtn.getAttribute('aria-expanded') === 'true';
+
+//         // Toggle the aria-expanded attribute
+//         accordionBtn.setAttribute('aria-expanded', !isExpanded);
+//         content.setAttribute('aria-hidden', isExpanded);
+
+//         if (isExpanded) {
+//             // Collapsing
+//             gsap.to(content, {
+//                 height: 0,
+//                 duration: 0.5,
+//                 ease: "power1.inOut",
+//                 onComplete: () => {
+//                     content.style.display = "none"; // Hide the content after collapsing
+//                 }
+//             });
+//         } else {
+//             // Expanding
+//             content.style.display = "block"; // Make it visible first
+//             const fullHeight = content.scrollHeight; // Get the full height for animation
+//             content.style.height = 0; // Set height to 0 for animation
+
+//             gsap.to(content, {
+//                 height: fullHeight,
+//                 duration: 0.5,
+//                 ease: "power1.inOut",
+//                 onComplete: () => {
+//                     content.style.height = "auto"; // Reset height to auto after animation
+//                 }
+//             });
+//         }
+//     });
+// });
 
 
 // TESTIMONIAL ANIM
