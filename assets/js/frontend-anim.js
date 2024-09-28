@@ -1,12 +1,38 @@
+gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
+
 window.addEventListener('DOMContentLoaded', function() {
    
+    
     let inputs = document.querySelectorAll('.form-file')
-
     for (var i = 0, len = inputs.length; i < len; i++) {
-    customInput(inputs[i])
+        customInput(inputs[i])
     }
 
-    function customInput (el) {
+
+    // PRELOADER ANIM
+    if(document.querySelector('.broadifi__loader')){
+        gsap.set(".broadifi__loader svg", {opacity: 0, y: 100} )
+        gsap.set(".broadifi__loader .logoTMask, .broadifi__loader .logoBMask", { drawSVG: "0%"} )
+    
+        let preloaderTl = gsap.timeline({ 
+            ease: "power1.out",
+            // onComplete: loadAnims
+        });
+        preloaderTl.to(".broadifi__loader svg",  {opacity: 1, y: 0} )
+        preloaderTl.to(".broadifi__loader .logoTMask", { drawSVG: "100%", duration:1})
+        preloaderTl.to(".broadifi__loader .logoBMask", { drawSVG: "100%", duration:1, onComplete: loadAnims}); // call loadAnim() here;
+        preloaderTl.to(".broadifi__loader svg",  {opacity: 0, y: 100, duration:0.5} )
+        preloaderTl.to(".broadifi__loader",  {opacity: 0, y: "10%", zIndex: "-1"})
+        preloaderTl.to(".broadifi__loader ~ header, .broadifi__loader ~ main, .broadifi__loader ~ footer", {opacity: 1, y: 0, duration:0.2}, "<")
+    }
+    else{
+        loadAnims(); 
+    }
+
+});
+
+
+function customInput (el) {
     const fileInput = el.querySelector('.input-file')
     const label = el.querySelector('#upload-fileName')
     
@@ -18,33 +44,7 @@ window.addEventListener('DOMContentLoaded', function() {
         el.className += ' -chosen'
         label.innerText = value
     }
-    }
-});
-
-gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
-
-
-// PRELOADER ANIM
-if(document.querySelector('.broadifi__loader')){
-    gsap.set(".broadifi__loader svg", {opacity: 0, y: 100} )
-    gsap.set(".broadifi__loader .logoTMask, .broadifi__loader .logoBMask", { drawSVG: "0%"} )
-  
-    let preloaderTl = gsap.timeline({ 
-        ease: "power1.out",
-        // onComplete: loadAnims
-    });
-    preloaderTl.to(".broadifi__loader svg",  {opacity: 1, y: 0} )
-    preloaderTl.to(".broadifi__loader .logoTMask", { drawSVG: "100%", duration:1})
-    preloaderTl.to(".broadifi__loader .logoBMask", { drawSVG: "100%", duration:1, onComplete: loadAnims}); // call loadAnim() here;
-    preloaderTl.to(".broadifi__loader svg",  {opacity: 0, y: 100, duration:0.5} )
-    preloaderTl.to(".broadifi__loader",  {opacity: 0, y: "10%", zIndex: "-1"})
-    preloaderTl.to(".broadifi__loader ~ header, .broadifi__loader ~ main, .broadifi__loader ~ footer", {opacity: 1, y: 0, duration:0.2}, "<")
 }
-else{
-    loadAnims(); 
-}
-
-
 
 
 function loadAnims(){
@@ -132,27 +132,40 @@ svgElements.forEach(svgElm => {
 
 
 // LOGO REVEAL ANIM ON SCROLL
-if(document.querySelector('.broadifi__projectsLogo')){
-    let getExpandables = document.querySelectorAll('.broadifi__projectsLogo-grid .svg-expandable');
+if(document.querySelector('.broadifi__clientsLogo')){
+   let mm = gsap.matchMedia();
 
-    [...getExpandables].forEach(getExpandable => {
-        getExpandable.setAttribute('data-actual-width', getExpandable.scrollWidth);
-        gsap.set(getExpandable, {
-            width: `${getExpandable.getAttribute('data-width')}px`
+    mm.add("(min-width: 1280px)", () => {
+        let getExpandables = document.querySelectorAll('.broadifi__clientsLogo-grid .svg-expandable');
+
+        [...getExpandables].forEach(getExpandable => {
+            getExpandable.setAttribute('data-actual-width', getExpandable.scrollWidth);
+            gsap.set(getExpandable, {
+                width: `${getExpandable.getAttribute('data-width')}px`
+            });
+        });
+    
+    
+        getExpandables.forEach(getExpandable => {
+            gsap.to(getExpandable, {
+                scrollTrigger: {
+                    trigger: '.broadifi__clientsLogo',
+                    start: 'top 80%',
+                    end: '+=200',
+                    scrub: 1,
+                    //markers: true,
+                },
+                width: `${getExpandable.getAttribute('data-actual-width')}px`
+            });
         });
     });
 
+    mm.add("(max-width: 1279px)", () => {
+        let figs = ".broadifi__clientsLogo-grid > *";
+        gsap.set(figs, {opacity: 0, y: 10});
 
-    getExpandables.forEach(getExpandable => {
-        gsap.to(getExpandable, {
-            scrollTrigger: {
-                trigger: '.broadifi__projectsLogo',
-                start: 'top 80%',
-                end: '+=200',
-                scrub: 1,
-                //markers: true,
-            },
-            width: `${getExpandable.getAttribute('data-actual-width')}px`
+        ScrollTrigger.batch(figs, {
+            onEnter: figs => gsap.to(figs, {opacity: 1, y: 0, duration: 1, stagger: 0.25, overwrite: true}),
         });
     });
 }
@@ -181,47 +194,71 @@ sectionHeadings.forEach(heading => {
 
 // VALUES ARW ANIM
 if (document.querySelector('.broadifi__values')) {
-    gsap.set(".broadifi__values .dotted-arw .dotPath, .broadifi__values .dotted-arw .arwPath", { 
-        drawSVG: "0%" 
+    let mm = gsap.matchMedia();
+    mm.add("(min-width: 768px)", () => {
+
+        gsap.set(".broadifi__values .dotted-arw .dotPath, .broadifi__values .dotted-arw .arwPath", { 
+            drawSVG: "0%" 
+        });
+    
+        function createArrowAnimation(triggerSelector, dotPaths, arwPaths) {
+            let dottedArwPathAnimTl = gsap.timeline({ 
+                ease: "power3",
+                scrollTrigger: {
+                    trigger: triggerSelector,
+                    start: 'top 85%',
+                    end: 'bottom 15%', // Initial end position
+                    // markers: true,
+                    // toggleActions: "play reset play reset",
+                    // onEnterBack: function() {
+                    //     // Change start and end dynamically when entering back
+                    //     this.start = "center center";  // New start position
+                    //     // this.end = "bottom 5%";   // New end position
+                    //     this.refresh(); // Refresh to apply the changes
+                    // }
+                }
+            });
+    
+            dottedArwPathAnimTl.to(dotPaths, { drawSVG: "100%", duration: 1 });
+            dottedArwPathAnimTl.to(arwPaths, { drawSVG: "100%", duration: 0.25 });
+    
+            return dottedArwPathAnimTl;
+        }
+    
+        // Animation for the first set of arrows
+        createArrowAnimation(
+            '.broadifi__value-item:nth-child(1)',
+            ".dotted-arw--1 .dotPath, .dotted-arw--2 .dotPath",
+            ".dotted-arw--1 .arwPath, .dotted-arw--2 .arwPath"
+        );
+    
+        // Animation for the second set of arrows
+        createArrowAnimation(
+            '.broadifi__value-item:nth-child(4)',
+            ".dotted-arw--3 .dotPath, .dotted-arw--4 .dotPath, .dotted-arw--5 .dotPath",
+            ".dotted-arw--3 .arwPath, .dotted-arw--4 .arwPath, .dotted-arw--5 .arwPath"
+        );
     });
 
-    function createArrowAnimation(triggerSelector, dotPaths, arwPaths) {
-        let dottedArwPathAnimTl = gsap.timeline({ 
-            ease: "power3",
+    mm.add("(max-width: 767px)", () => {
+        gsap.to('.broadifi__values--items .circle-highlther', {
+            top: '80%',
+            ease: "power2.out",
             scrollTrigger: {
-                trigger: triggerSelector,
-                start: 'top 85%',
-                end: 'bottom 15%', // Initial end position
-                // markers: true,
-                // toggleActions: "play reset play reset",
-                // onEnterBack: function() {
-                //     // Change start and end dynamically when entering back
-                //     this.start = "center center";  // New start position
-                //     // this.end = "bottom 5%";   // New end position
-                //     this.refresh(); // Refresh to apply the changes
-                // }
+                trigger: '.broadifi__values--items',
+                start: 'top 80%',
+                scrub: 1,
+               // markers: true
             }
+        })
+        let valuePaths = document.querySelectorAll('.broadifi__value-item figure');
+
+        [...valuePaths].forEach(valuePath => {
+            console.log(valuePath.querySelectorAll('path'))
+            gsap.fromTo(valuePath.querySelectorAll('path'), {drawSVG: "0%"}, {drawSVG: "-100%", stagger: 0.3, duration: 0.5, repeat: -1, repeatDelay: 0.2});
         });
-
-        dottedArwPathAnimTl.to(dotPaths, { drawSVG: "100%", duration: 1 });
-        dottedArwPathAnimTl.to(arwPaths, { drawSVG: "100%", duration: 0.25 });
-
-        return dottedArwPathAnimTl;
-    }
-
-    // Animation for the first set of arrows
-    createArrowAnimation(
-        '.broadifi__value-item:nth-child(1)',
-        ".dotted-arw--1 .dotPath, .dotted-arw--2 .dotPath",
-        ".dotted-arw--1 .arwPath, .dotted-arw--2 .arwPath"
-    );
-
-    // Animation for the second set of arrows
-    createArrowAnimation(
-        '.broadifi__value-item:nth-child(4)',
-        ".dotted-arw--3 .dotPath, .dotted-arw--4 .dotPath, .dotted-arw--5 .dotPath",
-        ".dotted-arw--3 .arwPath, .dotted-arw--4 .arwPath, .dotted-arw--5 .arwPath"
-    );
+        
+    });
 }
 
 // if(document.querySelector('.broadifi__values')){

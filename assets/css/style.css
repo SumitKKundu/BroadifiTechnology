@@ -17,7 +17,7 @@
     --fs-32: clamp(1.375rem, 1.66vw, 2rem);
     --fs-48: clamp(1.8rem, 3.25vw, 3rem);
     --fs-64: clamp(2rem, 3.35vw, 4rem);
-    --fs-72: clamp(2.75rem, 4.5vw, 5.5rem);
+    --fs-72: clamp(2.75rem, var(--fs-72-mid, 4.5vw), 5.5rem);
 
     --container-width: 1380px;
 }
@@ -25,6 +25,12 @@
 @media(max-width: 1400px){
     :root{
         --container-width: 1200px;
+    }
+}
+
+@media(max-width: 1200px){
+    :root{
+        --fs-72-mid: 5.5vw;
     }
 }
 
@@ -160,9 +166,10 @@ ol[role="list"]{
 .cta--grad{
     display: inline-block;
     font-family: var(--ff-heading);
-    font-weight: 700;
     font-size: var(--fs--cta-grad, 1.25rem);
+    font-weight: 700;
     padding: 1em 1.85em;
+    line-height: 1.25;
     background: -o-linear-gradient(0.62deg, #5A88FE -49.81%, #FB30B6 138.8%);
     background: linear-gradient(89.38deg, #5A88FE -49.81%, #FB30B6 138.8%);
     color: #fff;
@@ -185,7 +192,7 @@ ol[role="list"]{
     vertical-align: middle;
 
     position: absolute;
-    top: 1.5em;
+    top: 1.15em;
     right: 1em;
     opacity: 0;
     -webkit-transform: translateX(-100%);
@@ -706,14 +713,6 @@ ol[role="list"]{
 
 /********************** HOME  **********************/
 
-.abovefold{
-    min-height: calc(100dvh - 5em);
-    /* background-color: red; */
-    font-size: 1.125rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
 
 .broadifi__homeHero{
     font-size: var(--fs-72);
@@ -852,51 +851,146 @@ ol[role="list"]{
     grid-column: 1;
 }
 
-.broadifi__projectsLogo-grid{
-    display: -ms-inline-grid;
-    display: inline-grid;
-    grid-auto-flow: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    border: 2px solid currentColor;
-    border-radius: 6px;
+@media(max-width: 1279px){
+    .broadifi__homeHero{
+        --fs--cta-grad: 0.35em;
+        padding-top: 2.5em;
+        padding-bottom: 2.5em;
+        min-height: calc(100svh - 80px);   
+        display: grid;
+        place-items: center;
+    }
 }
 
-.broadifi__projectsLogo-grid figure.svg-expandable{
+@media(max-width: 575px){
+    .broadifi__homeHero{
+        --fs--cta-grad: 1.125rem;
+   
+    }
+    .broadifi__homeHero .line-left{
+        top: 11%;
+        left: 5%;
+    }
+    .broadifi__homeHero .line-right{
+        top: 15%;
+        left: 86%;
+    }
+
+    .broadifi__homeHero .technology-logs .posLC{
+        left: 7%;
+        top: 50%;
+    }
+    .broadifi__homeHero .technology-logs .posRT{
+        top: 5%;
+    }
+    .broadifi__homeHero .technology-logs .posRC{
+        right: 7%;
+        top: 55%;
+        opacity: 0.3;
+    }
+    .broadifi__homeHero .technology-logs .posLB{
+        left: 15%;
+        top: 82%;
+    }
+    .broadifi__homeHero .technology-logs .posRB{
+        right: 25%;
+        top: 80%;
+    }
+}
+
+/* CLIENT LOGOS */
+.broadifi__clientsLogo{
+    --container-width: 100%;
+}
+
+
+.broadifi__clientsLogo-grid figure.svg-expandable{
     overflow: hidden;
 }
 
-.broadifi__projectsLogo-grid svg{
-    width: auto;
-    max-width: 100%;
+.broadifi__clientsLogo-grid svg{
     display: block;
-    max-width: none;
 }
 
-.broadifi__projectsLogo-grid:hover figure,
-.broadifi__projectsLogo-grid figure{
+.broadifi__clientsLogo-grid:hover figure,
+.broadifi__clientsLogo-grid figure{
     will-change: filter;
     -webkit-filter: saturate(0);
             filter: saturate(0);
 }
 
-.broadifi__projectsLogo-grid:hover figure{
+.broadifi__clientsLogo-grid:hover figure{
     opacity: 0.8;
 }
 
-.broadifi__projectsLogo-grid figure:hover{
+.broadifi__clientsLogo-grid figure:hover{
     -webkit-filter: saturate(1);
             filter: saturate(1);
     opacity: 1;
 }
 
+@media(min-width: 1280px){
+    .abovefold{
+        min-height: calc(100dvh - 5em);
+        font-size: 1.125rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .broadifi__clientsLogo-grid{
+        display: -ms-inline-grid;
+        display: inline-grid;
+        grid-auto-flow: column;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        border: 2px solid currentColor;
+        border-radius: 6px;
+    }
+    .broadifi__clientsLogo-grid svg{
+        width: auto;
+        max-width: none;
+    }
+    .broadifi__clientsLogo .broadifi--section-heading{
+        display: none;
+    }
+}
+
+@media(max-width: 1279px){
+    .broadifi__clientsLogo-grid{
+       display: grid;
+       grid-template-columns: repeat(4, minmax(0, 1fr));
+       gap: 1rem;
+       margin-top: 2rem;
+    }
+
+    .broadifi__clientsLogo-grid figure{
+        padding: 1.5rem;
+        background-color: #ffffff;
+        background: #fff;
+        box-shadow: 0 0 30px 0 #7c7c7c21;
+        border-radius: 0.5rem;
+    }
+
+    .broadifi__clientsLogo-grid figure svg{
+        margin: auto;
+    }
+}
+
+@media(max-width: 575px){
+    .broadifi__clientsLogo-grid{
+       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
 /********************** VALUES **********************/
 .broadifi__values{
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: clamp(2rem, 7vw, 5rem);
+    padding-bottom: clamp(2rem, 7vw, 5rem);
 }
 
 .broadifi__values--items{
@@ -945,6 +1039,7 @@ ol[role="list"]{
 
 .broadifi__value-item figure{
     width: 37%;
+    color: #fff;
 }
 
 .broadifi__value-item figure svg{
@@ -1017,6 +1112,94 @@ ol[role="list"]{
     height: 32%;
 }
 
+.broadifi__values--items .circle-highlther{
+    position: absolute;
+    top: 10%;
+    left: 22px;
+    z-index: -1;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: #032dc4;
+    display: none;
+
+}
+
+@media(max-width: 1279px){
+    .broadifi__values .dotted-arw--1{
+        top: -6%;
+    }
+    .broadifi__values .dotted-arw--2{
+        top: -8%;
+        left: 53%;
+        transform: rotate(7deg);
+    }
+    .broadifi__values .dotted-arw--4{
+        top: 58%;
+        transform: rotate(12deg);
+    }
+    .broadifi__values .dotted-arw--3{
+        top: 40%;
+        left: 76%;
+        transform: rotate(19deg);
+    }
+}
+
+@media(max-width: 767px){
+    .broadifi__values .dotted-arw-svgs{
+        display: none;
+    }
+    .broadifi__values--items{
+        margin-top: 2rem;
+        display: block;
+    }
+
+    .broadifi__value-item:nth-child(1),
+    .broadifi__value-item:nth-child(3){
+        margin-top: 0;
+    }
+
+    .broadifi__value-item{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 4rem 1fr;
+        align-items: start;
+        text-align: left;
+        margin-bottom: 2rem;
+    }
+
+    .broadifi__value-item figure{
+        width: 100%;
+        grid-row: 1/span 2;
+        color: #032dc4;
+        border-radius: 50%;
+        box-shadow: 0 0 30px 0 #032dc434;
+    }
+
+    .broadifi__value-item p{
+        max-width: none;
+    }
+
+    .broadifi__value-item figure svg circle{
+        fill: #fff;
+    }
+
+    .broadifi__values--items .circle-highlther{
+        display: block;
+    }
+    
+    .broadifi__values--items::after{
+        content: '';
+        position: absolute;
+        top: 1px;
+        left: 2rem;
+        z-index: -11;
+        width: 2px;
+        height: 90%;
+        border-left: 1px dashed rgb(170, 170, 170);
+    }
+
+}
 
 /********************** SERVICES **********************/
 .broadifi__homeServices{
@@ -1220,9 +1403,9 @@ ol[role="list"]{
 
 .broadifi--service-item:not(:nth-child(1)) > h5,
 .broadifi--service-items:has(.broadifi--service-item:not(:nth-child(1)):hover) .broadifi--service-item:nth-child(1) > h5{
-    -webkit-transform: translateX(-46%)  translateY(350%)  rotate(-90deg);
-        -ms-transform: translateX(-46%)  translateY(350%)  rotate(-90deg);
-            transform: translateX(-46%)  translateY(350%)  rotate(-90deg);
+    -webkit-transform: translateX(-46%)  translateY(var(--transform-adjust, 350%))  rotate(-90deg);
+        -ms-transform: translateX(-46%)  translateY(var(--transform-adjust, 350%))  rotate(-90deg);
+            transform: translateX(-46%)  translateY(var(--transform-adjust, 350%))  rotate(-90deg);
 }
 
 .broadifi--service-item:not(:nth-child(1)) > *:not(h5):not(.gear-svg),
@@ -1272,7 +1455,14 @@ ol[role="list"]{
     transition: 0.3s ease-in-out 250ms;
 }
 
-
+@media(max-width: 1400px){
+    .broadifi__homeServices{
+        --transform-adjust: 650%;
+    }
+    .broadifi--service-item > h5{
+        top: 3rem;
+    }
+}
 
 /********************** HOME PROJECTS **********************/
 .broadifi__homeProjects{
