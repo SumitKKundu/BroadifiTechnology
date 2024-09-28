@@ -208,7 +208,7 @@ if (document.querySelector('.broadifi__values')) {
                     trigger: triggerSelector,
                     start: 'top 85%',
                     end: 'bottom 15%', // Initial end position
-                    // markers: true,
+                    //markers: true,
                     // toggleActions: "play reset play reset",
                     // onEnterBack: function() {
                     //     // Change start and end dynamically when entering back
