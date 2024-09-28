@@ -17,9 +17,15 @@
     --fs-32: clamp(1.375rem, 1.66vw, 2rem);
     --fs-48: clamp(1.8rem, 3.25vw, 3rem);
     --fs-64: clamp(2rem, 3.35vw, 4rem);
-    --fs-72: clamp(2.75rem, 4vw, 5.5rem);
+    --fs-72: clamp(2.75rem, 4.5vw, 5.5rem);
 
     --container-width: 1380px;
+}
+
+@media(max-width: 1400px){
+    :root{
+        --container-width: 1200px;
+    }
 }
 
 
@@ -710,18 +716,12 @@ ol[role="list"]{
 }
 
 .broadifi__homeHero{
-    --container-width: 15.694em;
     font-size: var(--fs-72);
-    text-align: center;
+    --container-width: 15.694em;
     --fs--cta-grad: 0.325em;
-    /* padding-top: 0.5em; */
-    /* padding-bottom: 1em; */
-    
-}
-
-.broadifi__homeHero .inner-container{
-    padding-top: 1.5em;
-    padding-bottom: 1.25em;
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
     position: relative;
 }
 
@@ -756,18 +756,18 @@ ol[role="list"]{
 }
 
 .broadifi__homeHero .technology-logs .posLT{
-    left: 4%;
-    top: 0;
+    left: 10%;
+     top: 0;
 }
 
 .broadifi__homeHero .technology-logs .posLC{
-    left: 0;
+    left: 4%;
     top: 33%;
 }
 
 .broadifi__homeHero .technology-logs .posLB{
-    left: 6%;
-    top: 73%;
+    left: 14%;
+     top: 73%;
     --rotate: 14.84deg;
 }
 
@@ -778,7 +778,7 @@ ol[role="list"]{
 }
 
 .broadifi__homeHero .technology-logs .posRC{
-    right: 0;
+    right: 7%;
     top: 35%;
     --rotate: -8.13deg;
 }
