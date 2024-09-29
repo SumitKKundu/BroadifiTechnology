@@ -2708,38 +2708,6 @@ ol[role="list"]{
     max-width: 2.5rem;
 }
 
-@media(max-width: 575px){
-    .broadifi__services{
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-    }
-    .broadifi--service-grid{
-        border: 2px solid currentColor;
-        border-radius: 1rem;
-        padding: 1rem;
-        background-color: #fff;
-    }
-
-    .broadifi--service-grid,
-    .broadifi--service-grid:nth-child(odd){
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-    
-    .broadifi--service-grid:nth-child(odd) > *{
-        grid-row: auto;
-    }
-   .broadifi--service-grid:nth-child(odd) .broadifi--service-grid--media,
-   .broadifi--service-grid:nth-child(odd) .broadifi--service-grid--content{
-       grid-column: auto;
-   } 
-
-   .broadifi--service-grid--content{
-        padding: 0;
-        border-radius: 0;
-        border: none;
-   }
-}
 
 /* INNER HERO IMAGE */
 .broadifi__inner--hero-media .media-radius-style{
