@@ -8,6 +8,19 @@ window.addEventListener('DOMContentLoaded', function() {
         customInput(inputs[i])
     }
 
+    // service accordian for mobile
+    const serviceAccordianBtns = document.querySelectorAll(".broadifi--service-item > h5");
+
+    [...serviceAccordianBtns].forEach(serviceAccordianBtn => {
+        serviceAccordianBtn.addEventListener('click', () => {
+            if(document.querySelector('.broadifi--service-item.is-actv')){
+                document.querySelector('.broadifi--service-item.is-actv').classList.remove('is-actv');
+            }
+            serviceAccordianBtn.parentElement.classList.toggle('is-actv');
+        })
+    });
+
+
 
     // PRELOADER ANIM
     if(document.querySelector('.broadifi__loader')){
@@ -254,7 +267,6 @@ if (document.querySelector('.broadifi__values')) {
         let valuePaths = document.querySelectorAll('.broadifi__value-item figure');
 
         [...valuePaths].forEach(valuePath => {
-            console.log(valuePath.querySelectorAll('path'))
             gsap.fromTo(valuePath.querySelectorAll('path'), {drawSVG: "0%"}, {drawSVG: "-100%", stagger: 0.3, duration: 0.5, repeat: -1, repeatDelay: 0.2});
         });
         
