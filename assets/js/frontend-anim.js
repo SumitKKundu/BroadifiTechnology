@@ -1,11 +1,30 @@
 gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
 
 window.addEventListener('DOMContentLoaded', function() {
-   
+    // mobile menu
+    this.document.querySelector('.btn--menuTgl').addEventListener('click', function(){
+        if(document.querySelector('.broadifi--header-nav').classList.contains('hammenu-showing')){
+            document.querySelector('.broadifi--header-nav').classList.remove('hammenu-showing')
+            gsap.set('.broadifi--header-nav ul a', {
+                opacity: 0,
+                y: 10,
+            }); 
+        }
+        else{
+            document.querySelector('.broadifi--header-nav').classList.add('hammenu-showing');
+            gsap.to('.broadifi--header-nav ul a', {
+                opacity: 1,
+                y: 0,
+                stagger: 0.05,
+            });
+        }
+    });
     
-    let inputs = document.querySelectorAll('.form-file')
-    for (var i = 0, len = inputs.length; i < len; i++) {
-        customInput(inputs[i])
+   
+    // input file
+    let inputFiles = document.querySelectorAll('.form-file')
+    for (var i = 0, len = inputFiles.length; i < len; i++) {
+        customInput(inputFiles[i])
     }
 
     // service accordian for mobile
@@ -13,14 +32,20 @@ window.addEventListener('DOMContentLoaded', function() {
 
     [...serviceAccordianBtns].forEach(serviceAccordianBtn => {
         serviceAccordianBtn.addEventListener('click', () => {
-            if(document.querySelector('.broadifi--service-item.is-actv')){
-                document.querySelector('.broadifi--service-item.is-actv').classList.remove('is-actv');
-            }
             serviceAccordianBtn.parentElement.classList.toggle('is-actv');
         })
     });
 
-
+    if (document.querySelector('.broadifi__bot')) {
+        gsap.set('.broadifi__bot, .broadifi__bot ul', {
+            scale: 0,
+            transformOrigin: "bottom right"
+        });
+        gsap.set('.broadifi__bot svg, .broadifi__bot ul li a', {
+            y: 10,
+            opacity: 0
+        });
+    }
 
     // PRELOADER ANIM
     if(document.querySelector('.broadifi__loader')){
@@ -36,10 +61,11 @@ window.addEventListener('DOMContentLoaded', function() {
         preloaderTl.to(".broadifi__loader .logoBMask", { drawSVG: "100%", duration:1, onComplete: loadAnims}); // call loadAnim() here;
         preloaderTl.to(".broadifi__loader svg",  {opacity: 0, y: 100, duration:0.5} )
         preloaderTl.to(".broadifi__loader",  {opacity: 0, y: "10%", zIndex: "-1"})
-        preloaderTl.to(".broadifi__loader ~ header, .broadifi__loader ~ main, .broadifi__loader ~ footer", {opacity: 1, y: 0, duration:0.2}, "<")
+        preloaderTl.to(".broadifi__loader ~ header, .broadifi__loader ~ main, .broadifi__loader ~ footer", {opacity: 1, y: 0, duration:0.2, onComplete: loadChatBot}, "<")
     }
     else{
         loadAnims(); 
+        loadChatBot();
     }
 
 });
@@ -59,8 +85,33 @@ function customInput (el) {
     }
 }
 
+function loadChatBot(){
+    // CHATBOT
+    if (document.querySelector('.broadifi__bot')) {
+        let botAppearTl = gsap.timeline({delay: 0.5});
+        botAppearTl.to('.broadifi__bot', { scale: 1, duration: 0.3 });
+        botAppearTl.to('.broadifi__bot svg', { y: 0, opacity: 1 }, "0.3");
+
+        let botClickTl = gsap.timeline({ paused: true });
+        botClickTl.to('.broadifi__bot ul', { scale: 1, duration: 0.2 });
+        botClickTl.to('.broadifi__bot ul li a', { y: 0, opacity: 1, stagger: 0.05 }, "0.2");
+
+        let isOpen = false;
+
+        document.querySelector('.broadifi__bot').addEventListener('click', function () {
+            if (!isOpen) {
+                botClickTl.play(); // Play the second timeline
+            } else {
+                botClickTl.reverse(); // Reverse the second timeline
+            }
+            isOpen = !isOpen; // Toggle the state
+        });
+    }
+}
+
 
 function loadAnims(){
+
 // TEXT FLIP ANIM
 if(document.querySelector('.flip-words')){
     let flipTxtAminTl = gsap.timeline({ repeat: -1, ease: "power4.inOut" });
@@ -108,6 +159,27 @@ if(document.querySelector('.technology-logs')){
         yoyo: true,
     });
 }
+
+if(document.querySelector('.broadifi__homeHero .doodles-svgs')){
+    gsap.to(".broadifi__homeHero .doodles-svgs > span", {
+        x: "random(-20, 25)",
+        y: "random(-25, 20)",
+        duration: 2,
+        ease: "power1.inOut",
+        repeat: -1,
+        yoyo: true,
+    });
+}
+
+gsap.to(".broadifi__careers-hero .posiB, .cloud--svg", {
+    x: "random(20, 25)",
+    y: "random(-25, 20)",
+    duration: 2,
+    ease: "power1.inOut",
+    repeat: -1,
+    yoyo: true,
+});
+
 
 // LINE DRAW ANIM
 const svgElements = document.querySelectorAll('.line-svg svg');
