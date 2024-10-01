@@ -3173,6 +3173,9 @@ ol[role="list"]{
 }
 
 @media(max-width: 575px){
+    .broadifi__blog-details .msg--svg{
+        display: none;
+    }
     .broadifi-blog--aside{
         -ms-grid-columns: (minmax(0, 1fr))[1];
         grid-template-columns: repeat(1, minmax(0, 1fr));
