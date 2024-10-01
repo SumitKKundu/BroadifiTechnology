@@ -477,6 +477,7 @@ ol[role="list"]{
     display: grid;
     place-items: center;
     text-align: left;
+    opacity: 0;
 }
 
 .broadifi__bot svg{
@@ -491,14 +492,13 @@ ol[role="list"]{
     font-family: var(--ff-heading);
     font-weight: 500;
     font-size: 1rem;
-    top: 0;
-    position: absolute;
     width: 150px;
-    border: 2px solid #d0d0d053;;
-    box-shadow: 10px 10px 10px 0 #d0d0d053;
-    right: 0;
+    position: absolute;
+    top: 0;
+    right: 15px;
+    box-shadow: 0 0 100px 0 #00000054;
     border-radius: 0.5em;
-    transform: translateY(-105%);
+    transform: translateY(-90%);
 }
 .broadifi__bot ul::after{
     content: '';
@@ -516,7 +516,16 @@ ol[role="list"]{
 
 .broadifi__bot ul a{
     padding: 0.5em 1em;
-    display: block;
+    display: inline-block;
+}
+
+.broadifi__bot ul a:hover,
+.broadifi__bot ul a:focus{
+    background: -o-linear-gradient(358.83deg, #5A88FE 47.32%, #FB30B6 94.22%);
+    background: linear-gradient(91.17deg, #5A88FE 47.32%, #FB30B6 94.22%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 @media(max-width: 1000px){
@@ -649,11 +658,8 @@ ol[role="list"]{
         z-index: 1;
         padding-top: 1rem;
         padding-bottom: 1rem;
-        pointer-events: none;
     }
-    .broadifi__header .inner-container > *{
-        pointer-events: all;
-    }
+ 
     .broadifi--header-nav{
         border-radius: 1.45rem;
         overflow: hidden;
@@ -663,6 +669,8 @@ ol[role="list"]{
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
+        position: relative;
+        z-index: 11;
     }
     .broadifi--header-nav ul{
         font-family: var(--ff-heading);
@@ -674,7 +682,6 @@ ol[role="list"]{
         top: 1rem;
         /* left: 0; */
         right: 15px;
-        z-index: -1;
         background-color: currentColor;
         padding-bottom: 0;
         border-bottom: none;
@@ -3581,7 +3588,6 @@ ol[role="list"]{
     }
     .broadifi__careers-hero .inner-container{
         padding-top: 1rem;
-        gap: 0;
     }
 }
 

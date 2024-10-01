@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', function() {
             scale: 0,
             transformOrigin: "bottom right"
         });
-        gsap.set('.broadifi__bot svg, .broadifi__bot ul li a', {
+        gsap.set('.broadifi__bot svg', {
             y: 10,
             opacity: 0
         });
@@ -88,13 +88,13 @@ function customInput (el) {
 function loadChatBot(){
     // CHATBOT
     if (document.querySelector('.broadifi__bot')) {
+        gsap.to('.broadifi__bot', {opacity: 1})
         let botAppearTl = gsap.timeline({delay: 0.5});
         botAppearTl.to('.broadifi__bot', { scale: 1, duration: 0.3 });
         botAppearTl.to('.broadifi__bot svg', { y: 0, opacity: 1 }, "0.3");
 
         let botClickTl = gsap.timeline({ paused: true });
         botClickTl.to('.broadifi__bot ul', { scale: 1, duration: 0.2 });
-        botClickTl.to('.broadifi__bot ul li a', { y: 0, opacity: 1, stagger: 0.05 }, "0.2");
 
         let isOpen = false;
 
