@@ -466,8 +466,8 @@ ol[role="list"]{
 
 /********************** BOT **********************/
 .broadifi__bot{
-    width: 5rem;
-    height: 5rem;
+    width: clamp(3.5rem, 5vw, 5rem);
+    height: clamp(3.5rem, 5vw, 5rem);
     border-radius: 50%;
     background: linear-gradient(146.32deg, #5A88FE -35.5%, #FB30B6 110.11%);
     position: fixed;
@@ -631,8 +631,6 @@ ol[role="list"]{
             align-items: center;
     gap: 0.2em;
     font-weight: 700;
-    padding-bottom: 0.5em;
-    border-bottom: 2px solid currentColor;
 }
 
 .broadifi--header-nav ul a{
@@ -786,7 +784,7 @@ ol[role="list"]{
     font-size: var(--fs-24);
 }
 
-/* .broadifi--footer-nav ul a{
+.broadifi--footer-nav ul a{
     padding-bottom: 0.2em;
     line-height: 1;
     border-bottom: 2px solid transparent;
@@ -800,7 +798,7 @@ ol[role="list"]{
 .broadifi--footer-nav ul a.focus,
 .broadifi--footer-nav ul a.nav-actv{
     border-bottom-color: currentColor;
-} */
+}
 
 
 .broadifi--footer-contact{
