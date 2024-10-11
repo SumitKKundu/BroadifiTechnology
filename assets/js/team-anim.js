@@ -17,10 +17,14 @@ function getCurrentTime() {
 
 
 function chatContainerScroll(){
-    chatTone.play()
+    // play the audio file
+    chatTone.play().catch((error) => {
+        console.error("Error playing audio:", error);
+    });
     let elementHeight = chatContainer.clientHeight; // or chatContainer.offsetHeight
     let scrollHeight = chatContainer.scrollHeight;
 
+    // if current height > actual height, then scroll to bottom
     if(scrollHeight > elementHeight){
         gsap.to(chatContainer, {
             scrollTo: {
