@@ -61,11 +61,12 @@ window.addEventListener('DOMContentLoaded', function() {
         preloaderTl.to(".broadifi__loader .logoBMask", { drawSVG: "100%", duration:1, onComplete: loadAnims}); // call loadAnim() here;
         preloaderTl.to(".broadifi__loader svg",  {opacity: 0, y: 100, duration:0.5} )
         preloaderTl.to(".broadifi__loader",  {opacity: 0, y: "10%", zIndex: "-1"})
-        preloaderTl.to(".broadifi__loader ~ header, .broadifi__loader ~ main, .broadifi__loader ~ footer", {opacity: 1, y: 0, duration:0.2, onComplete: loadChatBot}, "<")
+        preloaderTl.to(".broadifi__loader ~ header, .broadifi__loader ~ main, .broadifi__loader ~ footer", {opacity: 1, y: 0, duration:0.2, onComplete: loadChatBot, loadTeamAnim}, "<")
     }
     else{
         loadAnims(); 
         loadChatBot();
+        loadTeamAnim();
     }
 
 });

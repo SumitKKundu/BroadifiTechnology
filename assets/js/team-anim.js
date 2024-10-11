@@ -33,18 +33,65 @@ function chatContainerScroll(){
     }
 }
 
+function checkConnection(wifiIndicator) {
+    if (navigator.onLine) {
+        wifiIndicator.style.opacity = "1";
+    } else {
+        wifiIndicator.style.opacity = "0.25";
+    }
+}
+
+// get mobile wifi icon
+let wifiIndicator = document.querySelector('.wifi-connect');
+
+
+// check wifi status initially
+checkConnection(wifiIndicator);
+
+
+// check wifi status on change
+window.addEventListener('online',  () => wifiIndicator.style.opacity = "1");
+window.addEventListener('offline', () => wifiIndicator.style.opacity = "0.25");
+
+
+
+// print current time on mobile screen
 let currentTime = document.querySelector('#currentTime');
 currentTime.textContent = getCurrentTime();
 setInterval(() => {
     currentTime.textContent = getCurrentTime();
 }, 100);
 
-const chatContainer = document.getElementById('chatContainer');
 
-let memberCards = document.querySelectorAll('.member--card');
+// get chat body container
+let chatContainer = document.getElementById('chatContainer');
+
+// get chat tone audio
 let chatTone = document.getElementById('chatTone');
-let memberTl = gsap.timeline();
 
+// get all chat member divs
+let memberCards = document.querySelectorAll('.member--card');
+let memberTl = gsap.timeline({
+    onComplete: () => {
+        // once all member divs appear enable  type "Join" input box and sent btn
+        msgInput.disabled = false;
+    }
+});
+
+
+
+// mobile input box(type "join")
+let msgSendBtn = document.querySelector('.cta--send');
+let msgInput = document.querySelector('.chat--input');
+
+// disable type "Join" input box
+msgInput.disabled = true;
+msgSendBtn.disabled = true;
+
+
+
+function loadTeamAnim(){
+// show all chat member divs one by one
 memberCards.forEach((memberCard, index) => {
     let memberPic = memberCard.querySelector('.member--photo');
     let memberMsg = memberCard.querySelector('.member--msg');
@@ -54,95 +101,132 @@ memberCards.forEach((memberCard, index) => {
     gsap.set(memberMsg, { autoAlpha: 0, x: -10 });
 
     // Stagger the animations
-    memberTl.to(memberCard, { display: 'inline-grid', onComplete: chatContainerScroll}, index * 2.5)
+    memberTl.to(memberCard, { display: 'inline-grid', onComplete: chatContainerScroll}, index * 2.5) // on complete scroll to chat container to bottom
     memberTl.to(memberPic, { scale: 1}, ">")
     memberTl.to(memberMsg, { autoAlpha: 1, x: 0}, ">")
 });
 
 
 
-let msgSendBtn = document.querySelector('.cta--send');
-let msgInput = document.querySelector('.chat--input');
-
 let msgReplyCard = document.querySelector('.user-reply');
 let msgReplyTime = msgReplyCard.querySelector('#user-reply-time');
 let msgReply = msgReplyCard.querySelector('#user-reply-msg');
 
+
+// HR reply after user type "Join"
 let hRReplyCard = document.querySelector('.hr--reply');
+
+// mobile screen attachment 
 let ctaAttachment = document.querySelector('.cta--attachment');
-
-
 let userAttachmentInput = document.getElementById('chatAttachment');
 let userAttachmentCard = document.querySelector('.user-attachment');
 let userAttachmentTime = userAttachmentCard.querySelector('#user-reply-time');
 let userAttachmentMsg = userAttachmentCard.querySelector('#user-reply-msg');
 
+userAttachmentInput.disabled = true;
 
+// HR reply after user send attachment
 let hRLastReplyCard = document.querySelector('.hr--lastreply');
 
 
-msgInput.addEventListener('input', function(){ // Remove leading spaces and non-letter characters
+// make sure mobile input box(type "join") accept only text
+msgInput.addEventListener('input', function(){ 
+    // Remove leading spaces and non-letter characters
     msgInput.value = msgInput.value.replace(/^[\s]+/, '').replace(/[^a-zA-Z]/g, '');
 });
 
-msgSendBtn.addEventListener('click', function(){ // chat send button
-    if(msgInput.value.toLowerCase() == msgInput.getAttribute('data-text').toLowerCase()){
-        //console.log('matched');
-        chatContainerScroll();
-        msgReplyCard.style.display = 'inline-grid';
-        msgReplyTime.textContent = getCurrentTime();
-        msgReply.textContent = msgInput.value;
-        msgInput.disabled = true;
-        msgSendBtn.disabled = true;
 
+msgInput.addEventListener('keyup', function(){ 
+    // if user type "Join" then enable send btn
+    if(msgInput.value.toLowerCase() == msgInput.getAttribute('data-text').toLowerCase()){
+        msgSendBtn.disabled = false;
+    }
+    else{
+        msgSendBtn.disabled = true;
+    }
+});
+
+
+// chat send button
+msgSendBtn.addEventListener('click', function(){ 
+
+    chatContainerScroll();
+
+    // print what user type and what time
+    msgReplyCard.style.display = 'inline-grid';
+    msgReplyTime.textContent = getCurrentTime();
+    msgReply.textContent = msgInput.value;
+
+    // then disable+reset mobile input box and disable send button
+    msgInput.value = ' ';
+    msgInput.disabled = true;
+    msgSendBtn.disabled = true;
+
+    // after 2000ms display HR typing
+    setTimeout(() => {
+        chatContainerScroll();
+        hRReplyCard.style.display = 'inline-grid';
+        
+        // and after 3000ms HR ask to attach CV
         setTimeout(() => {
             chatContainerScroll();
-            hRReplyCard.style.display = 'inline-grid';
+            userAttachmentInput.disabled = false;
+            ctaAttachment.classList.add('focused');
+            hRReplyCard.querySelector('.typing-ui').style.display = 'none';
+            hRReplyCard.querySelector('.member--msg').style.display = 'block';
+            msgInput.value = '';
+            msgInput.placeholder = 'Attach CV in PDF, DOC, DOCX | Max. 2MB. 👉 👉🏽 👉🏻';
+
+        }, 5000);
+    }, 2500);
+
+    // if user attach a file (CV)
+    userAttachmentInput.addEventListener('change', function(){
+        if(userAttachmentInput.value) {
+            // disable attach input
+            userAttachmentInput.disabled = true;
+
+            // get attachment file
+            let userAttachmentFile = userAttachmentInput.files[0];
+            let userAttachmentFileName = userAttachmentFile.name;
+
+            // get attachment extension
+            let fileExtension = userAttachmentFileName.split('.').pop();
+
+            // remove extra names
+            let userAttachmentVal = userAttachmentInput.value.replace(/^.*[\\\/]/, '');
+
+            // if file name length more than 10 and extract first 15 letter and concatenate file extension
+            let extractedVal = userAttachmentVal.length > 15 ? `${userAttachmentVal.slice(0, 15)}...${fileExtension}` : userAttachmentVal;
+
+            // show attachment 
+            userAttachmentCard.style.display = 'inline-grid';
+            userAttachmentTime.textContent = getCurrentTime();
+            userAttachmentMsg.textContent = `🧷 ${extractedVal}`;
+            msgInput.placeholder = 'Attachment uploaded';
+            chatContainerScroll();
+
+            // once attachment uploaded disable attach input
+            ctaAttachment.classList.remove('focused');
+            ctaAttachment.disabled = true;
             
 
+            // after 2500 show HR typing
             setTimeout(() => {
                 chatContainerScroll();
-                ctaAttachment.classList.add('focused');
-                hRReplyCard.querySelector('.typing-ui').style.display = 'none';
-                hRReplyCard.querySelector('.member--msg').style.display = 'block';
-                msgInput.placeholder = 'Attach CV in PDF, DOC, DOCX | Max. Size 2MB. 👉 👉🏽 👉🏻';
-
-            }, 3000);
-        }, 1000);
-
-        
-        userAttachmentInput.addEventListener('change', function(){
-            if(userAttachmentInput.value) {
-                userAttachmentCard.style.display = 'inline-grid';
-                userAttachmentTime.textContent = getCurrentTime();
-
-                let file = userAttachmentInput.files[0];
-                let fileName = file.name;
-                let fileExtension = fileName.split('.').pop();
-                let value = userAttachmentInput.value.replace(/^.*[\\\/]/, '');
-                let extractedVal = value.length > 15 ? `${value.slice(0, 15)}...${fileExtension}` : value;
-
-                userAttachmentMsg.textContent = `🧷 ${extractedVal}`;
-                msgInput.placeholder = 'Attachment uploaded';
-                chatContainerScroll();
-                ctaAttachment.classList.remove('focused');
-                ctaAttachment.disabled = true;
+                hRLastReplyCard.style.display = 'inline-grid';
                 
+                // after 5000ms show HR last msg, that says CV sent to technical guys and conversaion end
                 setTimeout(() => {
                     chatContainerScroll();
-                    hRLastReplyCard.style.display = 'inline-grid';
-                    
-                    setTimeout(() => {
-                        chatContainerScroll();
-                        hRLastReplyCard.querySelector('.typing-ui').style.display = 'none';
-                        hRLastReplyCard.querySelector('.member--msg').style.display = 'block';
-                        msgInput.placeholder = 'Conversation end';
+                    hRLastReplyCard.querySelector('.typing-ui').style.display = 'none';
+                    hRLastReplyCard.querySelector('.member--msg').style.display = 'block';
+                    msgInput.placeholder = 'Conversation end';
 
-                    }, 3000);
-                }, 1000)
-            }
-        });
-
-    }
-    msgInput.value = '';
+                }, 5000);
+            }, 2500)
+        }
+    });
 });
+
+}
