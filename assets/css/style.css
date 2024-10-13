@@ -461,7 +461,10 @@ ol[role="list"]{
 
 .broadifi__loader{
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 111;
     display: -ms-grid;
     display: grid;
@@ -3489,7 +3492,10 @@ ol[role="list"]{
     .broadifi__openSourceContributers--grid::after{
         content: '';
         position: absolute;
-        inset: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         border-radius: inherit;
         border: inherit;
         border: 1px dashed #032dc4;
@@ -4346,7 +4352,7 @@ body.landscape  .team-screen::after{
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 11;
+    z-index: 1111;
     padding: 5vw;
     display: grid;
     place-items: center;
