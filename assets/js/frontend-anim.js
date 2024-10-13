@@ -71,7 +71,21 @@ window.addEventListener('DOMContentLoaded', function() {
 
 });
 
+function setVh() {
+    // Get the viewport height
+    const vh = window.innerHeight * 0.01; // 1vh = 1% of the viewport height
+    // Set the value to the CSS variable
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+  
+  // Call the function on load
+  setVh();
+  
+  // Add an event listener to handle window resizing
+  window.addEventListener('resize', setVh);
 
+  
+  
 function customInput (el) {
     const fileInput = el.querySelector('.input-file')
     const label = el.querySelector('#upload-fileName')

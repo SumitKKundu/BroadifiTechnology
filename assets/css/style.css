@@ -23,6 +23,8 @@
     --fs-72: clamp(2.75rem, var(--fs-72-mid, 4.5vw), 5.5rem);
 
     --container-width: 1380px;
+    --vh: 100vh; /* Default */
+    --fullHeight: calc(var(--vh, 1vh) * 100);
 }
 
 @media(max-width: 1400px){
@@ -188,7 +190,7 @@ ol[role="list"]{
     font-family: var(--ff-heading);
     font-size: var(--fs--cta-grad, 1.25rem);
     font-weight: 700;
-    padding: 1em 1.85em;
+    padding: 1em 2.1em;
     line-height: 1.25;
     background: -o-linear-gradient(0.62deg, #5A88FE -49.81%, #FB30B6 138.8%);
     background: linear-gradient(89.38deg, #5A88FE -49.81%, #FB30B6 138.8%);
@@ -574,9 +576,19 @@ ol[role="list"]{
 
 /********************** HEADER **********************/
 .broadifi__header{
+    --fs--cta-grad: 1.05rem;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     font-size: 1.125rem;
+    position: sticky;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    background-color: #fff;
+    background-image: radial-gradient(rgba(240, 240, 240, 0.3) 42%, transparent 42%);
+    background-position: 0 0, 40px 50px;
+    background-size: 21px 25px;
 }
 
 @media(max-width: 1300px){
@@ -631,6 +643,10 @@ ol[role="list"]{
     transition: transform 300ms ease;
 }
 
+.broadifi--header-nav{
+    margin-left: auto;
+}
+
 .broadifi--header-nav ul{
     display: -ms-grid;
     display: grid;
@@ -661,17 +677,15 @@ ol[role="list"]{
 
 @media(max-width: 1000px){
     .broadifi__header{
-        position: relative;
-        z-index: 1;
+        --fs--cta-grad: 0.95rem;
         padding-top: 1rem;
         padding-bottom: 1rem;
+        
+        /* box-shadow:  0 0 20px 0 #00000017;
+        margin-bottom: 20px; */
     }
  
-    .broadifi--header-nav{
-        border-radius: 1.45rem;
-        overflow: hidden;
-    }
-
+    
     .btn--menuTgl{
         display: -webkit-box;
         display: -ms-flexbox;
@@ -679,6 +693,20 @@ ol[role="list"]{
         position: relative;
         z-index: 11;
     }
+
+    .broadifi__header .cta--grad{
+        order: 1;
+        margin-left: auto;
+    }
+
+
+    .broadifi--header-nav{
+        border-radius: 1.45rem;
+        overflow: hidden;
+        margin-left: 0;
+        order: 2;
+    }
+
     .broadifi--header-nav ul{
         font-family: var(--ff-heading);
         font-size: 1.1rem;
@@ -4291,7 +4319,7 @@ ol[role="list"]{
 
 /* TEAM */
 .team-screen{
-    min-height: calc(100dvh - 40px);
+    height: calc(var(--fullHeight) - var(--headerHeight)); 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -4301,11 +4329,32 @@ ol[role="list"]{
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    overflow: hidden;
 }
 
+
+body.landscape  .team-screen::after{
+    content: 'Please view this page in portrait mode for better experience.';
+    font-family: var(--ff-heading);
+    font-size: 3vw;
+    line-height: 1.1;
+    background-color: var(--clr-logo);
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 111;
+    padding: 5vw;
+    display: grid;
+    place-items: center;
+    text-align: center;
+}   
+
+
 .broadifi__team-hero{
-    margin-top: auto;
-    margin-bottom: auto;
+   padding-bottom: 2rem;
 }
 
 .broadifi__team figure{
@@ -4345,11 +4394,19 @@ ol[role="list"]{
 
 /* ================================================== */
 
+.broadifi__teamNew{
+    width: 100%;
+    flex: 1;
+}
+
 .broadifi__teamNew .inner-container{
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     color: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .chat--header{
@@ -4409,13 +4466,19 @@ ol[role="list"]{
 
 .chat--body{
     background-image: url('./../img/charFrame2.png');
+    flex: 1;
+    position: relative;
 }
 
 .chat--body-inner{
     display: grid;
-    height: 50vh;
     overflow: auto;
     padding: 1.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .chat--body-inner::-webkit-scrollbar {

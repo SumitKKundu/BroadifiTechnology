@@ -1,3 +1,28 @@
+function isMobile() {
+    return /Android/i.test(navigator.userAgent) || /iPhone/i.test(navigator.userAgent);
+}
+
+function isTablet() {
+    return /iPad/i.test(navigator.userAgent);
+}
+  
+
+function checkOrientation() {
+    if (isMobile() && !isTablet() && window.innerHeight < window.innerWidth) {
+      document.body.classList.add('landscape');
+    } else {
+      document.body.classList.remove('landscape');
+    }
+  }
+  
+  // Initial check
+  checkOrientation();
+  
+  // Add event listeners for orientation change and resize
+  window.addEventListener('resize', checkOrientation);
+
+  
+
 function getCurrentTime() {
     const now = new Date();
     let hours = now.getHours();
@@ -47,6 +72,11 @@ function loadTeamAnim(){
 
 if(document.querySelector('.broadifi__teamNew')){
     gsap.registerPlugin(ScrollToPlugin);
+
+    // get header height 
+    let headerHeight = document.querySelector('.broadifi__header');
+    document.documentElement.style.setProperty('--headerHeight', `${headerHeight.offsetHeight}px`);
+
     
     // get mobile wifi icon
     let wifiIndicator = document.querySelector('.wifi-connect');
