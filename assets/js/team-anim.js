@@ -1,3 +1,4 @@
+// check mobile orientation for android and ios mobile only
 function isMobile() {
     return /Android/i.test(navigator.userAgent) || /iPhone/i.test(navigator.userAgent);
 }
@@ -15,10 +16,10 @@ function checkOrientation() {
     }
   }
   
-  // Initial check
+  // initial check
   checkOrientation();
   
-  // Add event listeners for orientation change and resize
+  // check on resize
   window.addEventListener('resize', checkOrientation);
 
   

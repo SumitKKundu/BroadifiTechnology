@@ -4333,6 +4333,7 @@ ol[role="list"]{
 }
 
 
+
 body.landscape  .team-screen::after{
     content: 'Please view this page in portrait mode for better experience.';
     font-family: var(--ff-heading);
@@ -4345,7 +4346,7 @@ body.landscape  .team-screen::after{
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 111;
+    z-index: 11;
     padding: 5vw;
     display: grid;
     place-items: center;
@@ -4397,6 +4398,7 @@ body.landscape  .team-screen::after{
 .broadifi__teamNew{
     width: 100%;
     flex: 1;
+    max-height: 1000px;
 }
 
 .broadifi__teamNew .inner-container{

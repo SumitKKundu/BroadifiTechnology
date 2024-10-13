@@ -1,6 +1,13 @@
 gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
 
 window.addEventListener('DOMContentLoaded', function() {
+    // set vh adjustment
+    setVh();
+
+    // get header height 
+    getHeaderHeight();
+
+
     // mobile menu
     this.document.querySelector('.btn--menuTgl').addEventListener('click', function(){
         if(document.querySelector('.broadifi--header-nav').classList.contains('hammenu-showing')){
@@ -84,12 +91,7 @@ function getHeaderHeight(){
     document.documentElement.style.setProperty('--headerHeight', `${headerHeight.offsetHeight}px`);
 }
 
-// Call the function on load
-setVh();
-// get header height 
-getHeaderHeight();
-
-// Add an event listener to handle window resizing
+// set vh adjustment and header height on resize
 window.addEventListener('resize', setVh);
 window.addEventListener('resize', getHeaderHeight);
   
