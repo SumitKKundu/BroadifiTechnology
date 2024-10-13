@@ -76,14 +76,22 @@ function setVh() {
     const vh = window.innerHeight * 0.01; // 1vh = 1% of the viewport height
     // Set the value to the CSS variable
     document.documentElement.style.setProperty('--vh', `${vh}px`);
-  }
-  
+}
+
+
+function getHeaderHeight(){
+    let headerHeight = document.querySelector('.broadifi__header');
+    document.documentElement.style.setProperty('--headerHeight', `${headerHeight.offsetHeight}px`);
+}
+
 // Call the function on load
 setVh();
+// get header height 
+getHeaderHeight();
 
 // Add an event listener to handle window resizing
 window.addEventListener('resize', setVh);
-
+window.addEventListener('resize', getHeaderHeight);
   
 
 function customInput (el) {

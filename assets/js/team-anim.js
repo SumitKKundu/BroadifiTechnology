@@ -68,12 +68,7 @@ function checkConnection(wifiIndicator) {
     }
 }
 
-function getHeaderHeight(){
-    let headerHeight = document.querySelector('.broadifi__header');
-    document.documentElement.style.setProperty('--headerHeight', `${headerHeight.offsetHeight}px`);
-}
 
-window.addEventListener('resize', getHeaderHeight);
 
 
 function loadTeamAnim(){
@@ -81,10 +76,6 @@ function loadTeamAnim(){
 if(document.querySelector('.broadifi__teamNew')){
     gsap.registerPlugin(ScrollToPlugin);
 
-    // get header height 
-    getHeaderHeight();
-
-    
     // get mobile wifi icon
     let wifiIndicator = document.querySelector('.wifi-connect');
 
