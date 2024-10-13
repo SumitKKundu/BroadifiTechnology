@@ -78,14 +78,14 @@ function setVh() {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   }
   
-  // Call the function on load
-  setVh();
-  
-  // Add an event listener to handle window resizing
-  window.addEventListener('resize', setVh);
+// Call the function on load
+setVh();
+
+// Add an event listener to handle window resizing
+window.addEventListener('resize', setVh);
 
   
-  
+
 function customInput (el) {
     const fileInput = el.querySelector('.input-file')
     const label = el.querySelector('#upload-fileName')
