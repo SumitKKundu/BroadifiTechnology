@@ -4716,6 +4716,7 @@ body.landscape  .team-screen::after{
 }
 
 .typing-ui p{
+    white-space: nowrap;
     margin-right: 0.5em;
 }
 
