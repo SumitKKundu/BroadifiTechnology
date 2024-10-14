@@ -2,7 +2,7 @@ gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
 
 window.addEventListener('DOMContentLoaded', function() {
     // set vh adjustment
-    //setVh();
+    setVh();
 
     // get header height 
     getHeaderHeight();
@@ -92,7 +92,7 @@ function getHeaderHeight(){
 }
 
 // set vh adjustment and header height on resize
-//window.addEventListener('resize', setVh);
+window.addEventListener('resize', setVh);
 window.addEventListener('resize', getHeaderHeight);
   
 
