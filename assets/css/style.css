@@ -4704,6 +4704,7 @@ body.landscape  .team-screen::after{
 }
 
 .typing-ui{
+    width: 150px;
     display: -ms-inline-grid;
     display: inline-grid;
     gap: 0.2em;
@@ -4716,7 +4717,6 @@ body.landscape  .team-screen::after{
 }
 
 .typing-ui p{
-    white-space: nowrap;
     margin-right: 0.5em;
 }
 
