@@ -172,6 +172,7 @@ if(document.querySelector('.broadifi__teamNew')){
     msgInput.addEventListener('keyup', function(){ 
         // if user type "Join" then enable send btn
         if(msgInput.value.toLowerCase() == msgInput.getAttribute('data-text').toLowerCase()){
+            msgReply.textContent = msgInput.value;
             msgSendBtn.disabled = false;
         }
         else{
@@ -188,19 +189,19 @@ if(document.querySelector('.broadifi__teamNew')){
         // print what user type and what time
         msgReplyCard.style.display = 'inline-grid';
         msgReplyTime.textContent = getCurrentTime();
-        msgReply.textContent = msgInput.value;
+        
 
         // then disable+reset mobile input box and disable send button
         msgInput.value = ' ';
         msgInput.disabled = true;
         msgSendBtn.disabled = true;
 
-        // after 2000ms display HR typing
+        // after 1000ms display HR typing
         setTimeout(() => {
             chatContainerScroll();
             hRReplyCard.style.display = 'inline-grid';
             
-            // and after 3000ms HR ask to attach CV
+            // and after 5000ms HR ask to attach CV
             setTimeout(() => {
                 chatContainerScroll();
                 userAttachmentInput.disabled = false;
@@ -211,7 +212,7 @@ if(document.querySelector('.broadifi__teamNew')){
                 msgInput.placeholder = 'Attach CV in PDF, DOC, DOCX | Max. 2MB. 👉 👉🏽 👉🏻';
 
             }, 5000);
-        }, 2500);
+        }, 1000);
 
         // if user attach a file (CV)
         userAttachmentInput.addEventListener('change', function(){
@@ -244,7 +245,7 @@ if(document.querySelector('.broadifi__teamNew')){
                 ctaAttachment.disabled = true;
                 
 
-                // after 2500 show HR typing
+                // after 1000 show HR typing
                 setTimeout(() => {
                     chatContainerScroll();
                     hRLastReplyCard.style.display = 'inline-grid';
@@ -257,7 +258,7 @@ if(document.querySelector('.broadifi__teamNew')){
                         msgInput.placeholder = 'Conversation end';
 
                     }, 5000);
-                }, 2500)
+                }, 1000)
             }
         });
     });
