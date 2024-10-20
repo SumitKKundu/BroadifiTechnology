@@ -136,6 +136,94 @@ function loadChatBot(){
 
 
 function loadAnims(){
+    let headerEl = document.querySelector('.broadifi__header');
+    let headerCTA = headerEl.querySelector('.headerCTA');
+    let headerNav = headerEl.querySelector('nav');
+    const ishomeHero = document.querySelector('.broadifi__homeHero');
+    let mmForHeader = gsap.matchMedia();
+
+
+    // header compact on scroll upto 1101px
+    ScrollTrigger.create({
+        start: "top top",
+        end: "bottom bottom",
+        onUpdate: self => {
+            if (self.scroll() > headerEl.offsetHeight) {
+                headerEl.classList.add("headerScrolled");
+            } else {
+                headerEl.classList.remove("headerScrolled");
+            }
+        },
+    });
+
+
+    if(ishomeHero){
+        mmForHeader.add("(min-width: 1101px)", () => {
+            // hide header 'Book A Call' btn for home page only
+            gsap.to(headerCTA, {
+                xPercent: 101,
+            })
+            gsap.to(headerNav, {
+                x: '188',
+            })
+
+
+            // once scrolled as height of header show 'Book A Call' btn 
+            ScrollTrigger.create({
+                start: "top top",
+                end: "bottom bottom",
+                onUpdate: self => {
+                    if (self.scroll() > ishomeHero.offsetHeight + 200) {
+                        gsap.to(headerCTA, {
+                            xPercent: 0,
+                            duration: 1,
+                            ease: "power2.out",
+                        })
+                        gsap.to(headerNav, {
+                            x: '0',
+                            duration: 1,
+                            ease: "power2.out",
+                        })
+                    } else {
+                        gsap.to(headerCTA, {
+                            xPercent: 101,
+                            duration: 1,
+                            ease: "power2.out",
+                        })
+                        gsap.to(headerNav, {
+                            x: '188',
+                            duration: 1,
+                            ease: "power2.out",
+                        })
+                    }
+                },
+            });
+        });
+
+        mmForHeader.add("(max-width: 1100px)", () => {
+            gsap.to(headerCTA, {
+                opacity: 0,
+            })
+
+            ScrollTrigger.create({
+                start: "top top",
+                end: "bottom bottom",
+                onUpdate: self => {
+                    if (self.scroll() > ishomeHero.offsetHeight) {
+                        gsap.to(headerCTA, {
+                            opacity: 1,
+                        })
+                    } else {
+                        gsap.to(headerCTA, {
+                            opacity: 0,
+                        })
+                    }
+                },
+            });
+        })
+    }
+
+
 
     // TEXT FLIP ANIM
     if(document.querySelector('.flip-words')){
