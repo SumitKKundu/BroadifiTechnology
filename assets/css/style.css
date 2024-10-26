@@ -190,7 +190,7 @@ ol[role="list"]{
     font-family: var(--ff-heading);
     font-size: var(--fs--cta-grad, 1.25rem);
     font-weight: 700;
-    padding: 1em 2.1em;
+    padding: var(--padding-cta-grad-1, 1em 2.1em);
     line-height: 1.25;
     background: -o-linear-gradient(0.62deg, #5A88FE -49.81%, #FB30B6 138.8%);
     background: linear-gradient(89.38deg, #5A88FE -49.81%, #FB30B6 138.8%);
@@ -480,8 +480,8 @@ ol[role="list"]{
 
 /********************** BOT **********************/
 .broadifi__bot{
-    width: clamp(3.5rem, 5vw, 5rem);
-    height: clamp(3.5rem, 5vw, 5rem);
+    width: clamp(3.5rem, 4vw, 4rem);
+    height: clamp(3.5rem, 4vw, 4rem);
     border-radius: 50%;
     background: linear-gradient(146.32deg, #5A88FE -35.5%, #FB30B6 110.11%);
     position: fixed;
@@ -495,7 +495,7 @@ ol[role="list"]{
 }
 
 .broadifi__bot svg{
-    max-width: 60%;
+    max-width: 50%;
     height: auto;
 }
 
@@ -580,6 +580,7 @@ ol[role="list"]{
 /********************** HEADER **********************/
 .broadifi__header{
     --fs--cta-grad: 1em;
+    --padding-cta-grad-1: 0.75em 2.1em;
     --paddingTB: 1.5rem;
     padding-top: var(--paddingTB);
     padding-bottom: var(--paddingTB);
@@ -588,11 +589,12 @@ ol[role="list"]{
     left: 0;
     right: 0;
     top: 0;
-    z-index: 1;
+    z-index: 11;
     transition: padding 0.5s;
 }
 
 .broadifi__header.headerScrolled{
+    --padding-cta-grad-1: 0.85em 2.1em;
     --paddingTB: 0.65rem;
     font-size: 1.05rem;
     background-color: #ffffff;
@@ -795,22 +797,34 @@ ol[role="list"]{
 /********************** FOOTER **********************/
 
 .broadifi__footer{
-    --container-width: 1130px;
+    --container-width: 1230px;
     background-color: #ffffff;
-    padding-top: clamp(2rem, 7vw, 5rem);
-    padding-bottom: clamp(2rem, 7vw, 5rem);
-    border-top: 4px solid currentColor;
+    background-image: url('./../img/doodles-svgs/footer-pattern.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 
-.broadifi__footer .inner-container > * + *{
-    margin-top: 2.5rem;
+.broadifi__footer .inner-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1rem;
+    padding-top: clamp(2rem, 7vw, 3rem);
+    padding-bottom: clamp(2rem, 7vw, 3rem);
+    border-top: 2px solid currentColor;
+}
+
+.broadifi--footer-infos > * + *{
+    margin-top: 0.5rem;
+    font-weight: 500;
 }
 
 .broadifi__footer--logo{
     font-family: var(--ff-heading);
     font-size: 1.5rem;
     font-weight: 700;
-    text-align: center;
+    line-height: 1.3;
 }
 
 .broadifi__footer--logo svg{
@@ -818,30 +832,61 @@ ol[role="list"]{
     height: auto;
     display: inline-block;
     vertical-align: text-top;
-    margin-left: 0.25em;
 }
 
-.broadifi--footer-nav ul{
-    font-family: var(--ff-heading);
+.broadifi--footer-social{
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: start;
+    justify-items: start;
+    list-style: none;
+    margin-top: 1rem;
+}
+
+
+.broadifi--footer-infos a{
+    transition: 0.5s;
+}
+
+.broadifi--footer-social a:hover{
+    opacity: 0.85;
+    transform: scale(0.9);
+}
+
+
+.broadifi--footer-infos a,
+.broadifi--footer-social img{
+    display: block;
+}
+
+.broadifi--footer-nav{
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
     -webkit-box-pack: space-evenly;
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
-    gap: 0.2em;
-    font-size: var(--fs-24);
+    gap: 5rem;
+    font-family: var(--ff-heading);
+    font-weight: 400;
 }
 
+
+.broadifi--footer-nav h6{
+    font-size: 1.35rem;
+    line-height: 1.3;
+    margin-bottom: 0.35em;
+}
+
+
 .broadifi--footer-nav ul a{
-    padding-bottom: 0.2em;
+    font-size: 1.125rem;
+    padding-bottom: 0.1em;
+    margin-top: 0.65em;
     line-height: 1;
-    border-bottom: 2px solid transparent;
+    border-bottom: 1px solid transparent;
     -webkit-transition: 400ms ease;
     -o-transition: 400ms ease;
     transition: 400ms ease;
@@ -854,59 +899,48 @@ ol[role="list"]{
     border-bottom-color: currentColor;
 }
 
-
-.broadifi--footer-contact{
-    font-family: var(--ff-heading);
-    font-weight: 400;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    gap: 1em;
-}
-
-.broadifi--footer-contact .d-grid{
-    display: -ms-grid;
-    display: grid;
-    gap: 1em;
-    grid-auto-flow: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-}
-
-.broadifi--footer-contact svg{
-    width: 1.85em;
-    height: auto;
-    vertical-align: middle;
-}
-
-.broadifi--footer-contact a:hover{
-    color: #000000
-}
-
-@media(max-width: 1100px){
-    .broadifi--footer-contact{
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-                flex-direction: column;
+@media(max-width: 1000px){
+    .broadifi--footer-nav{
+        gap: 3rem;
+    }
+    .broadifi--footer-nav h6{
+        font-size: 1.25rem;
+    }
+    .broadifi--footer-nav ul a{
+        font-size: 1rem;
+    }
+    .broadifi__footer--logo{
+        font-size: 1.45rem;
     }
 }
 
 @media(max-width: 767px){
-    .broadifi--footer-contact{
-       -webkit-box-align: start;
-           -ms-flex-align: start;
-               align-items: flex-start;
+    .broadifi__footer .inner-container{
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 3rem;
     }
-    .broadifi--footer-nav ul{
-        gap: 0.5em 2em;
+    .broadifi--footer-infos{
+        text-align: center;
+    }
+    .broadifi--footer-nav{
+        width: 100%;
+        justify-content: space-around;
+    }
+}
+
+
+@media(max-width: 575px){
+    .broadifi__footer .inner-container{
+        align-items: start;
+    }
+    .broadifi--footer-infos{
+        text-align: left;
+    }
+    .broadifi--footer-nav{
+        width: 100%;
+        flex-direction: column;
+        gap: 2rem;
     }
 }
 
@@ -916,7 +950,7 @@ ol[role="list"]{
 .broadifi__homeHero{
     font-size: var(--fs-72);
     --container-width: 15.694em;
-    --fs--cta-grad: 0.3em;
+    --fs--cta-grad: 0.325em;
     text-align: center;
     padding-top: 1em;
     padding-bottom: 1em;
@@ -4512,8 +4546,8 @@ body.landscape  .team-screen::after{
 
 .chat--header  .grp-name figure{
     border-radius: 50%;
-    width: 4.111em;
-    height: 4.111em;
+    width: 4em;
+    height: 4em;
     overflow: hidden;
 }
 
@@ -4664,11 +4698,11 @@ body.landscape  .team-screen::after{
     --msgCardClr: #324255;
     display: none;
     /* display: grid; */
-    grid-template-columns: var(--msg-card-col, 0.125fr 1fr);
+    grid-template-columns: var(--msg-card-col, 0.165fr 1fr);
     gap: 0.5rem;
     align-items: end;
     min-width: 250px;
-    max-width: 65%; 
+    max-width: 70%; 
     font-size: clamp(12px, 1.77vw, 1rem);
 }
 
@@ -4676,7 +4710,9 @@ body.landscape  .team-screen::after{
     margin-bottom: 3rem;
 }
 
+
 .member--photo img{
+    border-radius: 50%;
     display: block;
 }
 
@@ -4713,7 +4749,7 @@ body.landscape  .team-screen::after{
 
 .member--msg small{
     display: block;
-    font-size: inherit;
+    font-size: 14px;
     font-weight: 300;
     color: #a4a4a4;
     margin-bottom: 1em;

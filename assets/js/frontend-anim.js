@@ -1,6 +1,15 @@
 gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
 
 window.addEventListener('DOMContentLoaded', function() {
+
+    // nav active class in header and footer based on current page URL
+    const url = window.location.href; // Get current URL
+    const pageName = url.substring(url.lastIndexOf('/') + 1); // Extract page name
+    this.document.querySelector('header') && this.document.querySelector('header').querySelector(`li a[href="${pageName}"]`) && this.document.querySelector('header').querySelector(`li a[href="${pageName}"]`).classList.add('nav-actv')
+    this.document.querySelector('footer') && this.document.querySelector('footer').querySelector(`li a[href="${pageName}"]`) && this.document.querySelector('footer').querySelector(`li a[href="${pageName}"]`).classList.add('nav-actv')
+
+
+
     // set vh adjustment
     setVh();
 
@@ -164,7 +173,7 @@ function loadAnims(){
                 xPercent: 101,
             })
             gsap.to(headerNav, {
-                x: '188',
+                x: '212',
             })
 
 
@@ -191,7 +200,7 @@ function loadAnims(){
                             ease: "power2.out",
                         })
                         gsap.to(headerNav, {
-                            x: '188',
+                            x: '212',
                             duration: 1,
                             ease: "power2.out",
                         })
@@ -398,44 +407,67 @@ function loadAnims(){
             gsap.set(".broadifi__values .dotted-arw .dotPath, .broadifi__values .dotted-arw .arwPath", { 
                 drawSVG: "0%" 
             });
+
+            let dottedArwPathAnimTl = gsap.timeline({ 
+                ease: "power3",
+                scrollTrigger: {
+                    trigger: ".broadifi__values",
+                    start: 'top top',
+                    // end: 'top bottom',
+                    //markers: true,
+                    toggleActions: "restart reset reset restart"
+                }
+            });
+
+            dottedArwPathAnimTl.to(".broadifi__values .dotted-arw .dotPath", { drawSVG: "100%", duration: 1 });
+            dottedArwPathAnimTl.to(".broadifi__values .dotted-arw .arwPath", { drawSVG: "100%", duration: 0.25 });
+
+
+                // let dottedArwPathAnimTl = gsap.timeline({ 
+                //     ease: "power3",
+                //     paused: true,
+                // });
+
+                // dottedArwPathAnimTl.to(".broadifi__values .dotted-arw .dotPath", { drawSVG: "100%", duration: 1 });
+                // dottedArwPathAnimTl.to(".broadifi__values .dotted-arw .arwPath", { drawSVG: "100%", duration: 0.25 });
+
+                // ScrollTrigger.create({
+                //     trigger: ".broadifi__values",
+                //     start: 'top top',
+                //     end: 'top bottom',
+                //     markers: true,
+                // });  
+
         
-            function createArrowAnimation(triggerSelector, dotPaths, arwPaths) {
-                let dottedArwPathAnimTl = gsap.timeline({ 
-                    ease: "power3",
-                    scrollTrigger: {
-                        trigger: triggerSelector,
-                        start: 'top 85%',
-                        end: 'bottom 15%', // Initial end position
-                        //markers: true,
-                        // toggleActions: "play reset play reset",
-                        // onEnterBack: function() {
-                        //     // Change start and end dynamically when entering back
-                        //     this.start = "center center";  // New start position
-                        //     // this.end = "bottom 5%";   // New end position
-                        //     this.refresh(); // Refresh to apply the changes
-                        // }
-                    }
-                });
+            // function createArrowAnimation(triggerSelector, dotPaths, arwPaths) {
+            //     let dottedArwPathAnimTl = gsap.timeline({ 
+            //         ease: "power3",
+            //         scrollTrigger: {
+            //             trigger: triggerSelector,
+            //             start: 'top 85%',
+            //             end: 'bottom 15%', // Initial end position
+            //         }
+            //     });
         
-                dottedArwPathAnimTl.to(dotPaths, { drawSVG: "100%", duration: 1 });
-                dottedArwPathAnimTl.to(arwPaths, { drawSVG: "100%", duration: 0.25 });
+            //     dottedArwPathAnimTl.to(dotPaths, { drawSVG: "100%", duration: 1 });
+            //     dottedArwPathAnimTl.to(arwPaths, { drawSVG: "100%", duration: 0.25 });
         
-                return dottedArwPathAnimTl;
-            }
+            //     return dottedArwPathAnimTl;
+            // }
         
-            // Animation for the first set of arrows
-            createArrowAnimation(
-                '.broadifi__value-item:nth-child(1)',
-                ".dotted-arw--1 .dotPath, .dotted-arw--2 .dotPath",
-                ".dotted-arw--1 .arwPath, .dotted-arw--2 .arwPath"
-            );
+            // // Animation for the first set of arrows
+            // createArrowAnimation(
+            //     '.broadifi__value-item:nth-child(1)',
+            //     ".dotted-arw--1 .dotPath, .dotted-arw--2 .dotPath",
+            //     ".dotted-arw--1 .arwPath, .dotted-arw--2 .arwPath"
+            // );
         
-            // Animation for the second set of arrows
-            createArrowAnimation(
-                '.broadifi__value-item:nth-child(4)',
-                ".dotted-arw--3 .dotPath, .dotted-arw--4 .dotPath, .dotted-arw--5 .dotPath",
-                ".dotted-arw--3 .arwPath, .dotted-arw--4 .arwPath, .dotted-arw--5 .arwPath"
-            );
+            // // Animation for the second set of arrows
+            // createArrowAnimation(
+            //     '.broadifi__value-item:nth-child(4)',
+            //     ".dotted-arw--3 .dotPath, .dotted-arw--4 .dotPath, .dotted-arw--5 .dotPath",
+            //     ".dotted-arw--3 .arwPath, .dotted-arw--4 .arwPath, .dotted-arw--5 .arwPath"
+            // );
         });
 
         mm.add("(max-width: 767px)", () => {

@@ -196,7 +196,7 @@ if(document.querySelector('.broadifi__teamNew')){
         msgInput.disabled = true;
         msgSendBtn.disabled = true;
 
-        // after 1000ms display HR typing
+        // after 2000ms display HR typing
         setTimeout(() => {
             chatContainerScroll();
             hRReplyCard.style.display = 'inline-grid';
@@ -209,10 +209,10 @@ if(document.querySelector('.broadifi__teamNew')){
                 hRReplyCard.querySelector('.typing-ui').style.display = 'none';
                 hRReplyCard.querySelector('.member--msg').style.display = 'block';
                 msgInput.value = '';
-                msgInput.placeholder = 'Attach CV in PDF, DOC, DOCX | Max. 2MB. 👉 👉🏽 👉🏻';
+                msgInput.placeholder = 'Attach PDF, DOC, DOCX | Max. 2MB. 👉 👉🏽 👉🏻';
 
             }, 5000);
-        }, 1000);
+        }, 2000);
 
         // if user attach a file (CV)
         userAttachmentInput.addEventListener('change', function(){
@@ -245,7 +245,7 @@ if(document.querySelector('.broadifi__teamNew')){
                 ctaAttachment.disabled = true;
                 
 
-                // after 1000 show HR typing
+                // after 2000 show HR typing
                 setTimeout(() => {
                     chatContainerScroll();
                     hRLastReplyCard.style.display = 'inline-grid';
@@ -258,7 +258,7 @@ if(document.querySelector('.broadifi__teamNew')){
                         msgInput.placeholder = 'Conversation end';
 
                     }, 5000);
-                }, 1000)
+                }, 2000)
             }
         });
     });
