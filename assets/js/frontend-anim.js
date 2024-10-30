@@ -171,9 +171,12 @@ function loadAnims(){
             // hide header 'Book A Call' btn for home page only
             gsap.to(headerCTA, {
                 xPercent: 101,
+                autoAlpha: 0,
+                pointerEvents: "none"
             })
             gsap.to(headerNav, {
                 x: '212',
+                autoAlpha: 1
             })
 
 
@@ -185,6 +188,8 @@ function loadAnims(){
                     if (self.scroll() > ishomeHero.offsetHeight + 200) {
                         gsap.to(headerCTA, {
                             xPercent: 0,
+                            autoAlpha: 1,
+                            pointerEvents: "auto",
                             duration: 1,
                             ease: "power2.out",
                         })
@@ -196,6 +201,7 @@ function loadAnims(){
                     } else {
                         gsap.to(headerCTA, {
                             xPercent: 101,
+                            autoAlpha: 0,
                             duration: 1,
                             ease: "power2.out",
                         })
