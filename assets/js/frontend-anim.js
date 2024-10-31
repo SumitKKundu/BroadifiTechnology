@@ -5,6 +5,9 @@ window.addEventListener('DOMContentLoaded', function() {
     // nav active class in header and footer based on current page URL
     const url = window.location.href; // Get current URL
     const pageName = url.substring(url.lastIndexOf('/') + 1); // Extract page name
+    if(pageName == ''){
+        this.document.querySelector('header').querySelector(`li a[href="index.html"]`).classList.add('nav-actv');
+    }
     this.document.querySelector('header') && this.document.querySelector('header').querySelector(`li a[href="${pageName}"]`) && this.document.querySelector('header').querySelector(`li a[href="${pageName}"]`).classList.add('nav-actv')
     this.document.querySelector('footer') && this.document.querySelector('footer').querySelector(`li a[href="${pageName}"]`) && this.document.querySelector('footer').querySelector(`li a[href="${pageName}"]`).classList.add('nav-actv')
 
