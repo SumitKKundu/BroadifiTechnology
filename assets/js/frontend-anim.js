@@ -1,6 +1,14 @@
 gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
-
+let ishomeHero, headerEl = null;
 window.addEventListener('DOMContentLoaded', function() {
+    headerEl = document.querySelector('.broadifi__header');
+
+    // check if home page
+    ishomeHero = document.querySelector('.broadifi__homeHero');
+    if(ishomeHero){
+        headerEl.classList.add('ishomeHero');
+    }
+
 
     // nav active class in header and footer based on current page URL
     const url = window.location.href; // Get current URL
@@ -148,12 +156,10 @@ function loadChatBot(){
 
 
 function loadAnims(){
-    let headerEl = document.querySelector('.broadifi__header');
     let headerCTA = headerEl.querySelector('.headerCTA');
     let headerNav = headerEl.querySelector('nav');
-    const ishomeHero = document.querySelector('.broadifi__homeHero');
     let mmForHeader = gsap.matchMedia();
-
+    
 
     // header compact on scroll upto 1101px
     ScrollTrigger.create({
@@ -170,7 +176,6 @@ function loadAnims(){
 
 
     if(ishomeHero){
-        headerEl.classList.add('ishomeHero');
         mmForHeader.add("(min-width: 1101px)", () => {
             // hide header 'Book A Call' btn for home page only
             // gsap.to(headerCTA, {
