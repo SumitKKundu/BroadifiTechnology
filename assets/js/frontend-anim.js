@@ -170,17 +170,18 @@ function loadAnims(){
 
 
     if(ishomeHero){
+        headerEl.classList.add('ishomeHero');
         mmForHeader.add("(min-width: 1101px)", () => {
             // hide header 'Book A Call' btn for home page only
-            gsap.to(headerCTA, {
-                xPercent: 101,
-                autoAlpha: 0,
-                pointerEvents: "none"
-            })
-            gsap.to(headerNav, {
-                x: '212',
-                autoAlpha: 1
-            })
+            // gsap.to(headerCTA, {
+            //     xPercent: 101,
+            //     autoAlpha: 0,
+            //     pointerEvents: "none"
+            // })
+            // gsap.to(headerNav, {
+            //     x: '227',
+            //     autoAlpha: 1
+            // })
 
 
             // once scrolled as height of header show 'Book A Call' btn 
@@ -189,30 +190,32 @@ function loadAnims(){
                 end: "bottom bottom",
                 onUpdate: self => {
                     if (self.scroll() > ishomeHero.offsetHeight + 200) {
-                        gsap.to(headerCTA, {
-                            xPercent: 0,
-                            autoAlpha: 1,
-                            pointerEvents: "auto",
-                            duration: 1,
-                            ease: "power2.out",
-                        })
-                        gsap.to(headerNav, {
-                            x: '0',
-                            duration: 1,
-                            ease: "power2.out",
-                        })
+                        headerEl.classList.add('hermHeroScrolled');
+                        // gsap.to(headerCTA, {
+                        //     xPercent: 0,
+                        //     autoAlpha: 1,
+                        //     pointerEvents: "auto",
+                        //     duration: 1,
+                        //     ease: "power2.out",
+                        // })
+                        // gsap.to(headerNav, {
+                        //     x: '0',
+                        //     duration: 1,
+                        //     ease: "power2.out",
+                        // })
                     } else {
-                        gsap.to(headerCTA, {
-                            xPercent: 101,
-                            autoAlpha: 0,
-                            duration: 1,
-                            ease: "power2.out",
-                        })
-                        gsap.to(headerNav, {
-                            x: '212',
-                            duration: 1,
-                            ease: "power2.out",
-                        })
+                        headerEl.classList.remove('hermHeroScrolled');
+                        // gsap.to(headerCTA, {
+                        //     xPercent: 101,
+                        //     autoAlpha: 0,
+                        //     duration: 1,
+                        //     ease: "power2.out",
+                        // })
+                        // gsap.to(headerNav, {
+                        //     x: '227',
+                        //     duration: 1,
+                        //     ease: "power2.out",
+                        // })
                     }
                 },
             });

@@ -749,6 +749,34 @@ ol[role="list"]{
     opacity: 1;
 }
 
+@media(min-width: 1101px){
+    .broadifi__header.ishomeHero .broadifi--header-nav{
+        transform: translateX(12.65em);
+    }
+
+    .broadifi__header.ishomeHero.headerScrolled .broadifi--header-nav{
+        transition: transform 1s ease;
+    }
+
+    .broadifi__header.ishomeHero .headerCTA{
+        transform: translateX(101%);
+        opacity: 0;
+        pointer-events: none;
+        transition: 1s ease;
+    }
+
+
+    .broadifi__header.ishomeHero.hermHeroScrolled .broadifi--header-nav{
+        transform: translateX(0);
+        transition: transform 1s ease;
+    }
+    .broadifi__header.ishomeHero.hermHeroScrolled .headerCTA{
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: all;
+    }
+}
+
 @media(max-width: 1100px){
     .broadifi__header .inner-container{
         overflow: visible;
@@ -762,6 +790,10 @@ ol[role="list"]{
     .broadifi__header.headerScrolled{
         font-size: 0.95rem;
         --paddingTB: 0.5rem;
+    }
+
+    .broadifi__header.headerScrolled  .broadifi--header-nav{
+        --setTranslate: 214px;
     }
  
     .btn--menuTgl{
@@ -1076,7 +1108,7 @@ ol[role="list"]{
 
 .broadifi__homeHero .technology-logs .posLT{
     left: 10%;
-     top: 0;
+     top: 3%;
 }
 
 .broadifi__homeHero .technology-logs .posLC{
@@ -2535,7 +2567,7 @@ ol[role="list"]{
 }
 
 .broadifi__inner-hero{
-    padding-top: 1rem;
+    padding-top: 1.5rem;
     padding-bottom: clamp(2.5rem, 4vw, 4rem);
 }
 
@@ -4989,3 +5021,8 @@ body.landscape  .team-screen::after{
         padding: 0.5em 1em;
     }
 }
+
+
+/* .inner-container{
+    border: 1px solid red;
+} */
