@@ -670,14 +670,14 @@ ol[role="list"]{
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    gap: 0.2em;
+    gap: 2em;
     font-weight: 700;
 }
 
 .broadifi--header-nav > ul > li > a{
-    padding: 0.65em 1em;
+    padding: 0.5em 0;
     line-height: 1;
-    border-radius: 100em;
+    border-bottom: 2px solid transparent;
     -webkit-transition: 400ms ease;
     -o-transition: 400ms ease;
     transition: 400ms ease;
@@ -687,8 +687,7 @@ ol[role="list"]{
 .broadifi--header-nav a:hover,
 .broadifi--header-nav a.focus,
 .broadifi--header-nav a.nav-actv{
-    background-color: var(--clr-logo);
-    color: #fff;
+    border-bottom-color: currentColor !important;
 }
 
 .broadifi--header-nav > ul > li.has-submenu{
@@ -727,12 +726,13 @@ ol[role="list"]{
     transition: 400ms ease;
 }
 .broadifi--header-nav .submenu > li + li{
-    margin-top: 1em;
+    margin-top: 0.5em;
 }
 
 .broadifi--header-nav .submenu > li > a{
     display: block;
-    padding: 0.75em 1em;
+    padding:  1em;
+    border-radius: 0.5em;
     line-height: 1;
     border-radius: 0.25em;
 }
@@ -747,6 +747,13 @@ ol[role="list"]{
 .broadifi--header-nav > ul > li.has-submenu:focus .submenu{
     visibility: visible;
     opacity: 1;
+}
+
+.broadifi--header-nav .submenu > li > a:hover,
+.broadifi--header-nav .submenu > li > a.focus,
+.broadifi--header-nav .submenu > li > a.nav-actv{
+    background-color: var(--clr-logo);
+    color: #fff;
 }
 
 @media(min-width: 1101px){
@@ -837,6 +844,7 @@ ol[role="list"]{
         clip-path: polygon(88% 2%, 96% 2%, 96% 6%, 88% 6%);
         transition: clip-path 100ms ease-out;
         overflow: hidden;
+        gap: 0;
     }
     .broadifi--header-nav ul li{
         overflow: hidden;
@@ -851,6 +859,10 @@ ol[role="list"]{
         padding: 1em 1.5em;
         border-left: 10px solid transparent;
     }
+
+    .broadifi--header-nav .submenu > li > a:hover, 
+    .broadifi--header-nav .submenu > li > a.focus, 
+    .broadifi--header-nav .submenu > li > a.nav-actv,
     .broadifi--header-nav ul a:hover,
     .broadifi--header-nav ul a.focus,
     .broadifi--header-nav ul a.nav-actv{
@@ -916,7 +928,6 @@ ol[role="list"]{
 /********************** FOOTER **********************/
 
 .broadifi__footer{
-    --container-width: 1230px;
     background-color: #ffffff;
     background-image: url('./../img/doodles-svgs/footer-pattern.svg');
     background-repeat: no-repeat;

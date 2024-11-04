@@ -1,5 +1,6 @@
 gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
 let ishomeHero, headerEl = null;
+let isLoaded = false;
 window.addEventListener('DOMContentLoaded', function() {
     headerEl = document.querySelector('.broadifi__header');
 
@@ -75,25 +76,82 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     // PRELOADER ANIM
-    if(document.querySelector('.broadifi__loader')){
-        gsap.set(".broadifi__loader svg", {opacity: 0, y: 100} )
-        gsap.set(".broadifi__loader .logoTMask, .broadifi__loader .logoBMask", { drawSVG: "0%"} )
+    // if(document.querySelector('.broadifi__loader')){
+    //     gsap.set(".broadifi__loader svg", {opacity: 0, y: 100} )
+    //     gsap.set(".broadifi__loader .logoTMask, .broadifi__loader .logoBMask", { drawSVG: "0%"} )
     
-        let preloaderTl = gsap.timeline({ 
-            ease: "power1.out",
-            // onComplete: loadAnims
-        });
-        preloaderTl.to(".broadifi__loader svg",  {opacity: 1, y: 0} )
-        preloaderTl.to(".broadifi__loader .logoTMask", { drawSVG: "100%", duration:1})
-        preloaderTl.to(".broadifi__loader .logoBMask", { drawSVG: "100%", duration:1, onComplete: loadAnims}); // call loadAnim() here;
-        preloaderTl.to(".broadifi__loader svg",  {opacity: 0, y: 100, duration:0.5} )
-        preloaderTl.to(".broadifi__loader",  {opacity: 0, y: "10%", zIndex: "-1"})
-        preloaderTl.to(".broadifi__loader ~ header, .broadifi__loader ~ main, .broadifi__loader ~ footer", {opacity: 1, y: 0, duration:0.2, onComplete: loadChatBot, loadTeamAnim}, "<")
+    //     let preloaderTl = gsap.timeline({ 
+    //         ease: "power1.out",
+    //         // onComplete: loadAnims
+    //     });
+    //     preloaderTl.to(".broadifi__loader svg",  {opacity: 1, y: 0} )
+    //     preloaderTl.to(".broadifi__loader .logoTMask", { drawSVG: "100%", duration:1})
+    //     preloaderTl.to(".broadifi__loader .logoBMask", { drawSVG: "100%", duration:1, onComplete: loadAnims}); // call loadAnim() here;
+    //     preloaderTl.to(".broadifi__loader svg",  {opacity: 0, y: 100, duration:0.5} )
+    //     preloaderTl.to(".broadifi__loader",  {opacity: 0, y: "10%", zIndex: "-1"})
+    //     preloaderTl.to(".broadifi__loader ~ header, .broadifi__loader ~ main, .broadifi__loader ~ footer", {opacity: 1, y: 0, duration:0.2, onComplete: loadChatBot, loadTeamAnim}, "<")
+    // }
+    // else{
+    //     loadAnims(); 
+    //     loadChatBot();
+    //     loadTeamAnim();
+    // }
+
+
+
+    // PRELOADER ANIM (duraton changed)
+
+    if(this.sessionStorage.getItem("isLoaded")){
+        console.log('loaded')
+        if(document.querySelector('.broadifi__loader')){
+            gsap.set(".broadifi__loader svg", {opacity: 0, y: 20} )
+            gsap.set(".broadifi__loader .logoTMask, .broadifi__loader .logoBMask", { drawSVG: "0%"} )
+        
+            let preloaderTl = gsap.timeline({ 
+                ease: "power1.out",
+            });
+    
+            preloaderTl.to(".broadifi__loader svg",  {opacity: 1, y: 0} )
+            preloaderTl.to(".broadifi__loader .logoTMask", { drawSVG: "100%", duration: 0.35}, "0")
+            preloaderTl.to(".broadifi__loader .logoBMask", { drawSVG: "100%", duration: 0.5, onComplete: loadAnims}, "-=0.005"); // call loadAnim() here;
+            preloaderTl.to(".broadifi__loader svg",  {opacity: 0, y: 10, duration:0.1} )
+            preloaderTl.to(".broadifi__loader",  {opacity: 0, y: "10%", zIndex: "-1"})
+            preloaderTl.to(".broadifi__loader ~ header, .broadifi__loader ~ main, .broadifi__loader ~ footer", {opacity: 1, y: 0, duration:0.1, onComplete: loadChatBot, loadTeamAnim}, "<")
+        }
+
+        else{
+            loadAnims(); 
+            loadChatBot();
+            loadTeamAnim();
+        }
+
     }
     else{
-        loadAnims(); 
-        loadChatBot();
-        loadTeamAnim();
+        console.log('not loaded')
+        if(document.querySelector('.broadifi__loader')){
+            gsap.set(".broadifi__loader svg", {opacity: 0, y: 100} )
+            gsap.set(".broadifi__loader .logoTMask, .broadifi__loader .logoBMask", { drawSVG: "0%"} )
+        
+            let preloaderTl = gsap.timeline({ 
+                ease: "power1.out",
+                onComplete: () => {
+                    this.sessionStorage.setItem("isLoaded", true)
+                }
+            });
+            preloaderTl.to(".broadifi__loader svg",  {opacity: 1, y: 0} )
+            preloaderTl.to(".broadifi__loader .logoTMask", { drawSVG: "100%", duration:1})
+            preloaderTl.to(".broadifi__loader .logoBMask", { drawSVG: "100%", duration:1, onComplete: loadAnims}); // call loadAnim() here;
+            preloaderTl.to(".broadifi__loader svg",  {opacity: 0, y: 100, duration:0.5} )
+            preloaderTl.to(".broadifi__loader",  {opacity: 0, y: "10%", zIndex: "-1"})
+            preloaderTl.to(".broadifi__loader ~ header, .broadifi__loader ~ main, .broadifi__loader ~ footer", {opacity: 1, y: 0, duration:0.2, onComplete: loadChatBot, loadTeamAnim}, "<")
+        }
+
+
+        else{
+            loadAnims(); 
+            loadChatBot();
+            loadTeamAnim();
+        }
     }
 
 });
