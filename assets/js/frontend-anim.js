@@ -101,7 +101,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     // PRELOADER ANIM (duraton changed)
 
-    if(this.sessionStorage.getItem("isLoaded")){
+    if(this.sessionStorage.getItem("isLoaded")){ // once first load completed, loader fast duration
         console.log('loaded')
         if(document.querySelector('.broadifi__loader')){
             gsap.set(".broadifi__loader svg", {opacity: 0, y: 20} )
@@ -128,7 +128,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }
     else{
         console.log('not loaded')
-        if(document.querySelector('.broadifi__loader')){
+        if(document.querySelector('.broadifi__loader')){ // for first loaded, loader normal duration
             gsap.set(".broadifi__loader svg", {opacity: 0, y: 100} )
             gsap.set(".broadifi__loader .logoTMask, .broadifi__loader .logoBMask", { drawSVG: "0%"} )
         
@@ -452,6 +452,17 @@ function loadAnims(){
         });
     }
 
+
+    if(document.querySelector('.broadifi__client_bento-grid')){
+        let bentoFigs = ".broadifi__client_bento-grid > *";
+        gsap.set(bentoFigs, {opacity: 0, y: 10});
+    
+        ScrollTrigger.batch(bentoFigs, {
+            onEnter: bentoFigs => gsap.to(bentoFigs, {opacity: 1, y: 0, duration: 1, stagger: 0.25, overwrite: true}),
+        });
+    }
+
+  
 
     // SECTION HEADING ANIM
     const sectionHeadings = document.querySelectorAll('.broadifi--section-heading');
