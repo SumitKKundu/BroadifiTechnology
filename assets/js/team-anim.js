@@ -53,7 +53,7 @@ function chatContainerScroll(){
         gsap.to(chatContainer, {
             scrollTo: {
                 y: chatContainer.scrollHeight,
-                // autoKill: false
+                autoKill: true
             },
             duration: 10,
             ease: "circ.out",
@@ -179,6 +179,20 @@ if(document.querySelector('.broadifi__teamNew')){
             msgSendBtn.disabled = true;
         }
     });
+
+    ///////////////////////// OR /////////////////////////
+
+
+    // Check if the pressed key is the Enter key (keyCode 13) and trigger click msgSendBtn
+    msgInput.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            if(msgInput.value.toLowerCase() == msgInput.getAttribute('data-text').toLowerCase()){
+                msgReply.textContent = msgInput.value;
+                msgSendBtn.disabled = false;
+                msgSendBtn.click();
+            }
+        }
+      });
 
 
     // chat send button

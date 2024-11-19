@@ -486,8 +486,10 @@ ol[role="list"]{
     border-radius: 50%;
     background: linear-gradient(146.32deg, #5A88FE -35.5%, #FB30B6 110.11%);
     position: fixed;
-    bottom: 3rem;
-    right: 3rem;
+    /* bottom: 3rem; */
+    /* right: 3rem; */
+    bottom: 2rem;
+    right: calc(calc(calc(99vw - var(--container-width)) / 2) + 15px);
     z-index: 1;
     display: grid;
     place-items: center;
@@ -678,6 +680,12 @@ ol[role="list"]{
     position: relative;
 }
 
+.broadifi--header-nav > ul > li.has-submenu:hover .submenu,
+.broadifi--header-nav > ul > li.has-submenu:focus .submenu{
+    visibility: visible;
+    opacity: 1;
+}
+
 .broadifi--header-nav > ul > li.has-submenu > a::after{
     content: '';
     display: inline-block;
@@ -687,8 +695,6 @@ ol[role="list"]{
     border-right: 1px solid currentColor;
     border-bottom: 1px solid currentColor;
     margin-left: 0.3em;
-    visibility: hidden;
-    opacity: 0;
 }
 
 
@@ -719,18 +725,6 @@ ol[role="list"]{
     border-radius: 0.5em;
     line-height: 1;
     border-radius: 0.25em;
-}
-
-.broadifi--header-nav > ul > li.has-submenu:hover > a::after,
-.broadifi--header-nav > ul > li.has-submenu:focus > a::after{
-    visibility: visible;
-    opacity: 1;
-}
-
-.broadifi--header-nav > ul > li.has-submenu:hover .submenu,
-.broadifi--header-nav > ul > li.has-submenu:focus .submenu{
-    visibility: visible;
-    opacity: 1;
 }
 
 .broadifi--header-nav .submenu > li > a:hover,
@@ -882,6 +876,7 @@ ol[role="list"]{
         color: var(--clr-lblue);
         background-color: transparent;
         border-left-color: currentColor;
+        border-bottom: none;
     }
 
     .broadifi--header-nav > ul > li.has-submenu > a{
@@ -2831,6 +2826,10 @@ ol[role="list"]{
     position: relative;
 }
 
+.broadifi__whoWeAre .broadifi--section-content{
+    margin-top: 2rem;
+}
+
 .broadifi__whoWeAre .doodles-svgs span{
     position: absolute;
 }
@@ -3888,6 +3887,15 @@ ol[role="list"]{
     grid-row: 1/span 2;
 }
 
+.broadifi__jobOpeningss--grid .cta--arwTL::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
 @media(max-width: 1100px){
     .broadifi__jobOpeningss--grid{
         border-width: 2px;
@@ -4555,10 +4563,10 @@ ol[role="list"]{
     justify-content: space-between;
     align-items: center;
     
-    background-image: url('./../img/doodles-svgs/team-pattern.svg');
+    background-image: url('./../img/doodles-svgs/team-pattern1.svg');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     overflow: hidden;
 }
 
