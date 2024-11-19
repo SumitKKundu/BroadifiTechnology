@@ -489,7 +489,7 @@ ol[role="list"]{
     /* bottom: 3rem; */
     /* right: 3rem; */
     bottom: 2rem;
-    right: calc(calc(calc(99vw - var(--container-width)) / 2) + 15px);
+    right: calc(calc(calc(99vw - var(--container-width)) / 2) + 27px);
     z-index: 1;
     display: grid;
     place-items: center;
