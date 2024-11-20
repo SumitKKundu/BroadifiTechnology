@@ -1087,6 +1087,10 @@ ol[role="list"]{
     .broadifi--footer-social{
         margin-top: 0;
     }
+
+    .broadifi--footer-social img{
+        width: 2.5rem;
+    }
 }
 
 
