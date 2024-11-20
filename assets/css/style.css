@@ -550,7 +550,7 @@ ol[role="list"]{
         width: 3.5rem;
         height: 3.5rem;
         right: 15px;
-        bottom: 15px;
+        bottom: 60px;
     }
 
     .broadifi__bot ul{
@@ -972,6 +972,10 @@ ol[role="list"]{
     vertical-align: text-top;
 }
 
+.broadifi__footer .logo_mobile{
+    display: none;
+}
+
 .broadifi--footer-social{
     display: inline-flex;
     gap: 0.5rem;
@@ -1056,7 +1060,7 @@ ol[role="list"]{
     .broadifi__footer .inner-container{
         flex-direction: column-reverse;
         align-items: center;
-        gap: 3rem;
+        gap: 2rem;
     }
     .broadifi--footer-infos{
         text-align: center;
@@ -1065,10 +1069,31 @@ ol[role="list"]{
         width: 100%;
         justify-content: space-around;
     }
+
+    .broadifi__footer .logo_mobile{
+        display: block;
+        order: 1;
+    }
+
+    .broadifi__footer .logo_desk{
+        display: none;
+    }
+
+    .broadifi--footer-infos{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .broadifi--footer-social{
+        margin-top: 0;
+    }
 }
 
 
 @media(max-width: 575px){
+    .broadifi--footer-nav h6{
+        font-size: 1.15rem; 
+    }
     .broadifi__footer .inner-container{
         align-items: start;
     }
@@ -1077,8 +1102,8 @@ ol[role="list"]{
     }
     .broadifi--footer-nav{
         width: 100%;
-        flex-direction: column;
-        gap: 2rem;
+        justify-content: space-between;
+        gap: 1rem;
     }
 }
 
@@ -2225,9 +2250,6 @@ ol[role="list"]{
     --swiper-pagination-bullet-inactive-color: rgba(217, 217, 217, 1);
     --swiper-pagination-color: currentColor;
     --swiper-pagination-bullet-inactive-opacity: 1;
-    background-image: url('./../img/doodles-svgs/“.svg');
-    background-repeat: no-repeat;
-    background-position: 2rem 2rem;
 }
 
 .broadifi__testimonials .swiper-slide{
@@ -2237,6 +2259,9 @@ ol[role="list"]{
     font-size: var(--fs-24);
     font-weight: 700;
     line-height: 2;
+    background-image: url('./../img/doodles-svgs/“.svg');
+    background-repeat: no-repeat;
+    background-position: 2rem 2rem;
 }
 
 
@@ -2416,6 +2441,7 @@ ol[role="list"]{
 }
 
 .broadifi__faqs-accordian .accordion-panel{
+    background-color: #ffffff;
     border: 3px solid currentColor;
     border-radius: 1rem;
     padding: 1.5rem;
@@ -4079,6 +4105,7 @@ ol[role="list"]{
 }
 
 .broadifi__jobApplyForm .inner-container{
+    background-color: #ffffff;
     border: 2px solid currentColor;
     padding: 1.5rem;
     padding-bottom: 5rem;
